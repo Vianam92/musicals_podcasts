@@ -1,5 +1,5 @@
 import "./loader.css";
 
-const LoaderHeader = () => <div className="lds-dual-ring"></div>;
+const LoaderHeader = () => <div className="loader"></div>;
 
 export default LoaderHeader;
