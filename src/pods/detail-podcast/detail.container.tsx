@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import DetailComponent from "./detail.component";
 import PropTypes from "prop-types";
 import { DetailRepository } from "./detail.repository";
+import { IdRequest } from "../../model/detail.vm";
 
-const PodcastContainer = ({ podcastId }: any) => {
+const PodcastContainer = ({ podcastId }: IdRequest) => {
   const [podcast, setPodcast] = useState([]);
 
   useEffect(() => {

@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import CardComponent from "../../common/card";
+import { Detail } from "../../model/detail.vm";
 
-const DetailComponent = ({ podcast }: any) => {
+const DetailComponent = ({ podcast }: Detail) => {
   return (
     <>
       <CardComponent podcast={podcast} />

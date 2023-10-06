@@ -6,11 +6,11 @@ export interface List {
     title: string;
 }
 
-export interface Search {
+export interface ListRequest {
     id: string;
-    artist: string;
-    image: string;
-    title: string;
+    artist?: string;
+    image?: string;
+    title?: string;
 }
 
 export interface Feed {

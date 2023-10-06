@@ -4,8 +4,12 @@ import ListComponent from "./list.component";
 import PropTypes from 'prop-types';
 import { List } from "../../model/list.vm";
 
-const ListContainer = () => {
-  const [podcast, setPodcast] = useState([]);
+interface Search {
+  podcastSearch: string;
+}
+
+const ListContainer = ({podcastSearch}: Search) => {
+  const [podcast, setPodcast] = useState<List[]>([]);
 
   useEffect(() => {
     const repository = new ListRepository();
@@ -13,9 +17,17 @@ const ListContainer = () => {
       return setPodcast(data)});
   }, []);
 
+  const filterPodcast = () => {
+    return podcast.filter(
+      (pods) =>
+        pods.artist.toLowerCase().includes(podcastSearch) ||
+        pods.title.toLowerCase().includes(podcastSearch)
+    );
+  };
+
   return (
     <>
-      {podcast.map((pod: List) => (
+      {filterPodcast().map((pod: List) => (
         <ListComponent
           key={pod.id}
           id={pod.id}

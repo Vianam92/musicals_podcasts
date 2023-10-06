@@ -14,7 +14,7 @@ const Home = () => {
         handlerInput={handlerInput}
         podcastSearch={podcastSearch}
       />
-      <ListContainer />
+      <ListContainer podcastSearch={podcastSearch} />
     </div>
   );
 };

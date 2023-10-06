@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+import { List } from "../../model/list.vm";
 
-const ListComponent = (props: any) => {
+const ListComponent = (props: List) => {
 
   return (
     <Link to={`podcast/${props.id}`}>
