@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ListRepository } from "./list.repository";
 import ListComponent from "./list.component";
 import PropTypes from 'prop-types';
 import { List } from "../../model/list.vm";
+import { LoaderContext } from '../../core/useContext/useLoader';
 
 interface Search {
   podcastSearch: string;
@@ -10,11 +11,15 @@ interface Search {
 
 const ListContainer = ({podcastSearch}: Search) => {
   const [podcast, setPodcast] = useState<List[]>([]);
+  const { setIsLoader } = useContext(LoaderContext);
 
   useEffect(() => {
     const repository = new ListRepository();
-    repository.execute().then((data: any) => {
-      return setPodcast(data)});
+    setIsLoader(true);
+    repository.execute().then((data: any) => { 
+    setPodcast(data);
+    setIsLoader(false);
+    });
   }, []);
 
   const filterPodcast = () => {

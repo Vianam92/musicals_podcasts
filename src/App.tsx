@@ -1,15 +1,17 @@
-import React from 'react';
-import './App.css';
-import Header from './layout/header';
+import React from "react";
+import "./App.css";
+import Header from "./layout/header";
 import RouterComponent from "./core/routes/routes";
-
+import { LoaderContextProvider } from "./core/useContext/useLoader";
 function App() {
   return (
     <div className="App">
-      <Header />
-      <main>
-        <RouterComponent />
-      </main>
+      <LoaderContextProvider>
+        <Header />
+        <main>
+          <RouterComponent />
+        </main>
+      </LoaderContextProvider>
     </div>
   );
 }
