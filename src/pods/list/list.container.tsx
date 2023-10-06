@@ -4,13 +4,14 @@ import ListComponent from "./list.component";
 import PropTypes from 'prop-types';
 import { List } from "../../model/list.vm";
 import { LoaderContext } from '../../core/useContext/useLoader';
+import ls from "../../common-app/localStorage";
 
 interface Search {
   podcastSearch: string;
 }
 
 const ListContainer = ({podcastSearch}: Search) => {
-  const [podcast, setPodcast] = useState<List[]>([]);
+  const [podcast, setPodcast] = useState<List[]>(ls.get("podcast", []));
   const { setIsLoader } = useContext(LoaderContext);
 
   useEffect(() => {
@@ -21,6 +22,10 @@ const ListContainer = ({podcastSearch}: Search) => {
     setIsLoader(false);
     });
   }, []);
+
+  useEffect(() => {
+    ls.set("podcast", podcast)
+  })
 
   const filterPodcast = () => {
     return podcast.filter(
