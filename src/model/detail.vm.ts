@@ -1,5 +1,4 @@
 export interface DetailData {
-    key?: string;
     id: string;
     artwork: string;
     name: string;
@@ -7,7 +6,7 @@ export interface DetailData {
 }
 
 export interface IdRequest{
-    podcastId: string;
+    podcastId?: string | undefined;
 }
 
 export interface Detail{
