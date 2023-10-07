@@ -5,3 +5,7 @@ export const datefinally = (timestamp: number) => {
     const timespend = day - timestamp;
     return timespend > hours;
 }
+
+export const hoursUtil = (): number => {
+   return new Date().getTime()
+}

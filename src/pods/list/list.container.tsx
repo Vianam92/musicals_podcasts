@@ -6,6 +6,7 @@ import { List } from "../../model/list.vm";
 import { LoaderContext } from '../../core/useContext/useLoader';
 import ls from "../../common-app/localStorage";
 import lsd from "../../common-app/localstorageDate";
+import { hoursUtil } from "../../common/utils";
 
 interface Search {
   podcastSearch: string;
@@ -25,10 +26,8 @@ const ListContainer = ({podcastSearch}: Search) => {
   }, []);
 
   useEffect(() => {
-    //TODO hacer utils
-    const day: number = new Date().getTime();
     ls.set("podcast", podcast);
-    lsd.set("timestamp", day)
+    lsd.set("timestamp", hoursUtil())
   })
 
   const filterPodcast = () => {
