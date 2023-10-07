@@ -5,6 +5,7 @@ import { Title, TitleH2, InputSearch } from '../../styled/styled.component';
 
 interface Props {
     podcastSearch: string;
+    //TODO change type
     handlerInput: React.Dispatch<React.SetStateAction<any>>
 }
 

@@ -1,8 +1,10 @@
-const SectionLayout = () => {
+import React from "react";
+import "./center.css";
+interface Props {
+  children: React.ReactNode;
+}
+const SectionLayout = ({ children }: Props) => {
+  return <section className="layout-grid">{children}</section>;
+};
 
-      return (
-        <section></section>
-      );
-  }
-  
-  export default SectionLayout;
+export default SectionLayout;

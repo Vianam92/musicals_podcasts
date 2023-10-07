@@ -1,0 +1,23 @@
+.center-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.author-list{
+    color:grey;
+    font-weight: 600;
+    text-align: center;
+    padding:5px;
+}
+
+.author-list span{
+    padding-right: 3px;
+}
+
+.image-list{
+    transform: translateY(-50px);
+}

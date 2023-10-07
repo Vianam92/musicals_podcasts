@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { ListRepository } from "./list.repository";
 import ListComponent from "./list.component";
 import PropTypes from 'prop-types';
-import { Feed, List } from "../../model/list.vm";
+import { List } from "../../model/list.vm";
 import { LoaderContext } from '../../core/useContext/useLoader';
 import ls from "../../common-app/localStorage";
 import lsd from "../../common-app/localstorageDate";
@@ -25,6 +25,7 @@ const ListContainer = ({podcastSearch}: Search) => {
   }, []);
 
   useEffect(() => {
+    //TODO hacer utils
     const day: number = new Date().getTime();
     ls.set("podcast", podcast);
     lsd.set("timestamp", day)

@@ -1,18 +1,20 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { List } from "../../model/list.vm";
+import { ImageStyled, ListStyle } from "../../styled/styled.component";
+import "./list.css";
 
 const ListComponent = (props: List) => {
 
   return (
     <Link to={`podcast/${props.id}`}>
-      <section>
-        <ul>
-          <li>
-            <img src={props.image} alt={props.title}></img>
+      <section className="section-list">
+        <ul className="center-list">
+          <li className="image-list">
+            <ImageStyled src={props.image} alt={props.title} />
           </li>
-          <li>{props.title}</li>
-          <li>
+          <ListStyle>{props.title}</ListStyle>
+          <li className="author-list">
             <span>Author: </span>
             {props.artist}
           </li>

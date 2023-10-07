@@ -29,5 +29,17 @@ border-radius:5px;
 border: solid 2px hsla(148, 7%, 42%, 0.293);
 font-size:17px;
 width:250px;
+`;
 
+export const ImageStyled = styled.img`
+border-radius:50%;
+`
+
+export const ListStyle = styled.li`
+text-transform: uppercase;
+color:black;
+font-weight: 700;
+width:100%;
+text-align: center;
+flex-grow:2
 `
