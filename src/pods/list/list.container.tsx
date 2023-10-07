@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import { ListRepository } from "./list.repository";
 import ListComponent from "./list.component";
 import PropTypes from 'prop-types';
-import { List } from "../../model/list.vm";
+import { Feed, List } from "../../model/list.vm";
 import { LoaderContext } from '../../core/useContext/useLoader';
 import ls from "../../common-app/localStorage";
+import lsd from "../../common-app/localstorageDate";
 
 interface Search {
   podcastSearch: string;
@@ -17,19 +18,17 @@ const ListContainer = ({podcastSearch}: Search) => {
   useEffect(() => {
     const repository = new ListRepository();
     setIsLoader(true);
-    repository.execute().then((data: any) => { 
+    repository.execute().then((data: List[]) => { 
       setPodcast(data);
       setIsLoader(false);
       });
   }, []);
 
   useEffect(() => {
-    const day: any = new Date().getTime();
+    const day: number = new Date().getTime();
     ls.set("podcast", podcast);
-    ls.set("timestamp", day)
+    lsd.set("timestamp", day)
   })
-
-  //isOutdated(JSON.parse(localStorage.getItem(podcastsKey)).timestamp)
 
   const filterPodcast = () => {
     return podcast.filter(
