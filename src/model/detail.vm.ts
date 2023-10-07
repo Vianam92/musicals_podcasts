@@ -3,6 +3,7 @@ export interface DetailData {
     artwork: string;
     name: string;
     artist: string;
+    timestamp?: number;
 }
 
 export interface IdRequest{

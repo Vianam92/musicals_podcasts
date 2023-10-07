@@ -27,7 +27,7 @@ const ListContainer = ({podcastSearch}: Search) => {
 
   useEffect(() => {
     ls.set("podcast", podcast);
-    lsd.set("timestamp", hoursUtil())
+    lsd.set("timestamp-list", hoursUtil())
   })
 
   const filterPodcast = () => {

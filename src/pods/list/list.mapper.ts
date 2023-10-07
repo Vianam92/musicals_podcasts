@@ -1,11 +1,10 @@
 import { Feed } from "../../model/list.vm";
-
+//TODO
 const mapPodcastFromApi = (podcast: any) => ({
     id: podcast.id.attributes["im:id"],
     artist: podcast["im:artist"].label,
     image: podcast["im:image"][2].label,
     title: podcast["im:name"].label,
-    updated: podcast.label,
   });
 
 const mapPodcastCollectionFromApi = (podcastCollection: any) =>
