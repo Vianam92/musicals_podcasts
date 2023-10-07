@@ -5,6 +5,7 @@ const mapPodcastFromApi = (podcast: any) => ({
     artist: podcast["im:artist"].label,
     image: podcast["im:image"][2].label,
     title: podcast["im:name"].label,
+    updated: podcast.label,
   });
 
 const mapPodcastCollectionFromApi = (podcastCollection: any) =>

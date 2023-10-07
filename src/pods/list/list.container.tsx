@@ -18,14 +18,18 @@ const ListContainer = ({podcastSearch}: Search) => {
     const repository = new ListRepository();
     setIsLoader(true);
     repository.execute().then((data: any) => { 
-    setPodcast(data);
-    setIsLoader(false);
-    });
+      setPodcast(data);
+      setIsLoader(false);
+      });
   }, []);
 
   useEffect(() => {
-    ls.set("podcast", podcast)
+    const day: any = new Date().getTime();
+    ls.set("podcast", podcast);
+    ls.set("timestamp", day)
   })
+
+  //isOutdated(JSON.parse(localStorage.getItem(podcastsKey)).timestamp)
 
   const filterPodcast = () => {
     return podcast.filter(

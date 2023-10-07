@@ -11,6 +11,7 @@ export interface ListRequest {
     artist?: string;
     image?: string;
     title?: string;
+    updated?: string;
 }
 
 export interface Feed {
