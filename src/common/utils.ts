@@ -6,5 +6,5 @@ export const datefinally = (timestamp: number) => {
 }
 
 export const hoursUtil = (): number => {
-   return new Date().getTime()
+   return new Date().getTime();
 }
