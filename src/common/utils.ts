@@ -1,4 +1,4 @@
-export const datefinally = (timestamp: number) => {
+export const datefinally = (timestamp: number): boolean => {
     const hours: number = 86400 * 1000;
     const day: number = Date.now();
     const timespend = day - timestamp;
