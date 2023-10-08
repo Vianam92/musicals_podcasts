@@ -4,7 +4,6 @@ export interface List {
     artist: string;
     image: string;
     title: string;
-    timestamp?: number;
 }
 export interface ListRequest {
     id: string;

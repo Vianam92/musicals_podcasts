@@ -1,6 +1,6 @@
 import { ListService } from "./list.api";
 import mapPodcastCollectionFromApi from "./list.mapper";
-import { Feed, List } from "../../model/list.vm";
+import { List } from "../../model/list.vm";
 
 export class ListRepository {
   async execute(): Promise<List[]> {

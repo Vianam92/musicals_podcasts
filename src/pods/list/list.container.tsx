@@ -10,7 +10,7 @@ import { datefinally, hoursUtil } from "../../common/utils";
 interface Search {
   podcastSearch: string;
 }
-
+//TODO refactor
 const ListContainer = ({ podcastSearch }: Search) => {
   const [podcast, setPodcast] = useState<List[]>(ls.get("podcast", []));
   const [timeStamp, setTimesTamp] = useState<number>(
