@@ -1,6 +1,6 @@
-import { Feed } from "../../model/list.vm";
+import { DetailData, DetailResult } from "../../model/detail.vm";
 
-const mapPodcastFromApi = (podcast: any) => ({
+const mapPodcastFromApi = (podcast: DetailData) => ({
   id: podcast.trackId,
   artwork: podcast.artworkUrl600,
   name: podcast.trackName,
@@ -8,8 +8,8 @@ const mapPodcastFromApi = (podcast: any) => ({
   artist: podcast.artistName,
 });
 
-const mapPodcastCollectionFromApi = (podcastCollection: any) =>
-  podcastCollection.results.map((collection: Feed[]) =>
+const mapPodcastCollectionFromApi = (podcastCollection: DetailResult) =>
+  podcastCollection.results.map((collection: DetailData) =>
     mapPodcastFromApi(collection)
   );
 

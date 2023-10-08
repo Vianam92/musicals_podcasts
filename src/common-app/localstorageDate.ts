@@ -1,4 +1,4 @@
-const get = (key: any, date: number) => {
+const get = (key: string, date: number) => {
     const data = localStorage.getItem(key);
     if (data === null) {
       return date;
@@ -7,7 +7,7 @@ const get = (key: any, date: number) => {
     }
   };
   
-  const set = (key: any, value: number) => {
+  const set = (key: string, value: number) => {
     localStorage.setItem(key, JSON.stringify(value));
   };
   

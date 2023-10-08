@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from "react";
 import "./filter.css";
-import { Title, TitleH2, InputSearch } from '../../styled/styled.component';
+import { TitleH2, InputSearch } from '../../styled/styled.component';
 
+//TODO
 interface Props {
     podcastSearch: string;
-    //TODO change type
     handlerInput: React.Dispatch<React.SetStateAction<any>>
 }
 

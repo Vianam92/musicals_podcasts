@@ -1,9 +1,17 @@
 export interface DetailData {
+    trackId: string;
+    artworkUrl600: string;
+    trackName: string;
+    artistName: string;
+    feedUrl: string;
+}
+
+export interface Data {
     id: string;
     artwork: string;
     name: string;
     artist: string;
-    timestamp?: number;
+    feedUrl: string;
 }
 
 export interface IdRequest{
@@ -11,5 +19,9 @@ export interface IdRequest{
 }
 
 export interface Detail{
-    podcast: DetailData[];
+    podcast: Data[];
+}
+
+export interface DetailResult{
+    results: DetailData[]
 }

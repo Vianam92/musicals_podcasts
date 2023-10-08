@@ -1,7 +1,7 @@
 import { List } from "../model/list.vm";
-import { DetailData } from '../model/detail.vm';
+import { Data } from '../model/detail.vm';
 
-const get = (key: string, defaultData: List[] | DetailData[]) => {
+const get = (key: string, defaultData: List[] | Data[]) => {
   const data = localStorage.getItem(key);
   if (data === null) {
     return defaultData;
@@ -10,7 +10,7 @@ const get = (key: string, defaultData: List[] | DetailData[]) => {
   }
 };
 
-const set = (key: string, value: any) => {
+const set = (key: string, value: List[] | Data[]) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
 

@@ -6,7 +6,6 @@ export interface List {
     title: string;
     timestamp?: number;
 }
-
 export interface ListRequest {
     id: string;
     artist?: string;
@@ -15,14 +14,7 @@ export interface ListRequest {
 }
 
 export interface Feed {
-    author:  Author;
     entry:   Entry[];
-    updated: Icon;
-    rights:  Icon;
-    title:   Icon;
-    icon:    Icon;
-    link:    Link[];
-    id:      Icon;
 }
 
 export interface Author {

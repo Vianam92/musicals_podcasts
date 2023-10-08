@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
-import { Detail, DetailData } from "../model/detail.vm";
+import { Data, Detail } from "../model/detail.vm";
 
 const CardComponent = ({ podcast }: Detail) => {
   return (
     <article>
-      {podcast.map((pod: DetailData) => {
+      {podcast.map((pod: Data) => {
         return (
           <ul key={pod.id}>
             <li>
