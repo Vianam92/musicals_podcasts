@@ -4,23 +4,23 @@ type ContextProviderProps = {
     children: React.ReactNode;
 }
 
-interface contextLoader {
+interface contextUse {
     isloader: boolean,
     setIsLoader: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const LoaderContext = createContext({} as contextLoader);
+export const UseContextGeneral = createContext({} as contextUse);
 
-export function LoaderContextProvider({ children }: ContextProviderProps) {
+export function GeneralContextProvider({ children }: ContextProviderProps) {
   const [isloader, setIsLoader] = useState<boolean>(false);
 
   return (
-    <LoaderContext.Provider
+    <UseContextGeneral.Provider
       value={{ isloader, setIsLoader}}
     >
       {children}
-    </LoaderContext.Provider>
+    </UseContextGeneral.Provider>
   );
 }
 
-export default LoaderContextProvider;
+export default UseContextGeneral;

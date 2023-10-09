@@ -3,9 +3,8 @@ import { ListRepository } from "./list.repository";
 import ListComponent from "./list.component";
 import PropTypes from "prop-types";
 import { List } from "../../model/list.vm";
-import { LoaderContext } from "../../core/useContext/useLoader";
+import { UseContextGeneral } from "../../core/useContext/useContext";
 import ls from "../../common-app/localStorage";
-import lsd from "../../common-app/localstorageDate";
 import { datefinally, hoursUtil } from "../../common/utils";
 interface Search {
   podcastSearch: string;
@@ -14,10 +13,10 @@ interface Search {
 const ListContainer = ({ podcastSearch }: Search) => {
   const [podcast, setPodcast] = useState<List[]>(ls.get("podcast", []));
   const [timeStamp, setTimesTamp] = useState<number>(
-    lsd.get("timestamp-list", 0)
+    ls.get("timestamp-list", 0)
   );
   const [isTime, setIsTime] = useState<boolean>(false);
-  const { setIsLoader } = useContext(LoaderContext);
+  const { setIsLoader } = useContext(UseContextGeneral);
 
   useEffect(() => {
     const repository = new ListRepository();
@@ -32,7 +31,7 @@ const ListContainer = ({ podcastSearch }: Search) => {
 
   useEffect(() => {
     ls.set("podcast", podcast);
-    lsd.set("timestamp-list", timeStamp);
+    ls.set("timestamp-list", timeStamp);
   }, [isTime]);
 
   const filterPodcast = () => {

@@ -4,12 +4,18 @@ export interface List {
     artist: string;
     image: string;
     title: string;
+    summary?: string;
 }
+
+export interface Request{
+    feed: Feed;
+} 
 export interface ListRequest {
     id: string;
     artist?: string;
     image?: string;
     title?: string;
+    summary?: string;
 }
 
 export interface Feed {

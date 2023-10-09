@@ -5,12 +5,12 @@ import { DetailRepository } from "./detail.repository";
 import { Data, IdRequest } from "../../model/detail.vm";
 import ls from "../../common-app/localStorage";
 import { datefinally, hoursUtil } from "../../common/utils";
-import lsd from "../../common-app/localstorageDate";
 
+//TODO
 const PodcastContainer = ({ podcastId }: IdRequest) => {
   const [podcast, setPodcast] = useState<Data[]>(ls.get("detail", []));
   const [timeStamp, setTimesTamp] = useState<number>(
-    lsd.get("timestamp-detail", 0)
+    ls.get("timestamp-detail", 0)
   );
   const [isTime, setIsTime] = useState<boolean>(false);
 
@@ -25,7 +25,7 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
 
   useEffect(() => {
     ls.set("detail", podcast);
-    lsd.set("timestamp-detail", timeStamp);
+    ls.set("timestamp-detail", timeStamp);
   }, [isTime]);
 
   return <DetailComponent podcast={podcast} />;

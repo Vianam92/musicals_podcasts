@@ -5,6 +5,7 @@ export const mapPodcastFromApi = (podcast: Entry) => ({
     artist: podcast["im:artist"].label,
     image: podcast["im:image"][2].label,
     title: podcast["im:name"].label,
+    summary: podcast.summary.label,
   });
 
 const mapPodcastCollectionFromApi = (podcastCollection: Feed) =>

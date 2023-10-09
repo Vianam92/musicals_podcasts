@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { Data, Detail } from "../model/detail.vm";
 
 const CardComponent = ({ podcast }: Detail) => {
+
   return (
     <article>
       {podcast.map((pod: Data) => {
