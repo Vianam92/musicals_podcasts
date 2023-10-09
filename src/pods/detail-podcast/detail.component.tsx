@@ -1,17 +1,22 @@
 import PropTypes from "prop-types";
 import CardComponent from "../../common/card";
-import { Detail } from "../../model/detail.vm";
+import CardEpisodesComponent from "../../common/card.episodes";
+import SectionLayout from "../../layout/center.layout";
 
-const DetailComponent = ({ podcast }: Detail) => {
+const DetailComponent = ({ detail }: any) => {
+
   return (
     <>
-      <CardComponent podcast={podcast} />
+      <SectionLayout>
+        <CardComponent detail={detail} />
+        <CardEpisodesComponent />
+      </SectionLayout>
     </>
   );
 };
 
 DetailComponent.propTypes = {
-  podcast: PropTypes.object,
+  detail: PropTypes.array,
 };
 
 export default DetailComponent;

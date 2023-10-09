@@ -1,6 +1,6 @@
 export interface DetailData {
     trackId: string;
-    artworkUrl600: string;
+    artworkUrl30: string;
     trackName: string;
     artistName: string;
     feedUrl: string;

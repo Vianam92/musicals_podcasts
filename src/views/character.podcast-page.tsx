@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
+import EpisodesContainer from '../pods/episodes/episode.container';
 
 const CharacterPodcast = () => {
   useEffect(() => {
 
   })
     return (
-      <div>
-        <h1>Hola, Bienvenido al sistema</h1>
-      </div>
+      <EpisodesContainer></EpisodesContainer>
     );
 }
 
-export default CharacterPodcast;
+export default CharacterPodcast; 

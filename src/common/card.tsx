@@ -1,23 +1,28 @@
 import PropTypes from "prop-types";
+import { Data } from "../model/detail.vm";
 
-const CardComponent = ({ podcast }: any) => {
+const CardComponent = ({ detail }: any) => {
 
   return (
     <article>
-          <ul>
+      {detail ? detail.map((pod: Data) => {
+        return (
+          <ul key={pod.id}>
             <li>
-              <img src={podcast[0].artwork} alt={podcast[0].name} />
+              <img src={pod.artwork} alt={pod.name} />
             </li>
-            <li>{podcast[0].artist}</li>
-            <li>{podcast[0].name}</li>
-            <li>{podcast.summary}</li>
+            <li>{pod.artist}</li>
+            <li>{pod.name}</li>
+            <li><span>Description: </span>{pod.summary}</li>
           </ul>
+        );
+      }): ""}
     </article>
   );
 };
 
 CardComponent.propTypes = {
-  podcast: PropTypes.object,
+  detail: PropTypes.array,
 };
 
 export default CardComponent;
