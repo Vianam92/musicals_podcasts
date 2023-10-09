@@ -1,0 +1,14 @@
+article{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    max-width: 350px;
+    height: auto;
+    padding: 15px;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+

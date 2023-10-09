@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import { Data } from "../model/detail.vm";
+import "./card.css";
+import { ListImage, Image , Title, TitleSpan, TitleBy, ListDescription, DescriptionSpan} from "./card.styled";
 
 const CardComponent = ({ detail }: any) => {
 
@@ -8,12 +10,11 @@ const CardComponent = ({ detail }: any) => {
       {detail ? detail.map((pod: Data) => {
         return (
           <ul key={pod.id}>
-            <li>
-              <img src={pod.artwork} alt={pod.name} />
-            </li>
-            <li>{pod.artist}</li>
-            <li>{pod.name}</li>
-            <li><span>Description: </span>{pod.summary}</li>
+            <ListImage className="list-img">
+              <Image src={pod.artwork} alt={pod.name} />
+            </ListImage>
+            <Title className="title"><TitleSpan>{pod.artist}</TitleSpan><TitleBy>By {pod.name}</TitleBy></Title>
+            <ListDescription className="descrition"><DescriptionSpan>Description: </DescriptionSpan><small>{pod.summary}</small></ListDescription>
           </ul>
         );
       }): ""}

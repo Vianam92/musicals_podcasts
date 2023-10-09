@@ -2,7 +2,7 @@ import { DetailData, DetailResult } from "../../model/detail.vm";
 
 const mapPodcastFromApi = (podcast: DetailData) => ({
   id: podcast.trackId,
-  artwork: podcast.artworkUrl30,
+  artwork: podcast.artworkUrl600,
   name: podcast.trackName,
   feedUrl: podcast.feedUrl,
   artist: podcast.artistName,
