@@ -1,34 +1,49 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext} from "react";
 import DetailComponent from "./detail.component";
 import PropTypes from "prop-types";
 import { DetailRepository } from "./detail.repository";
-import { Data, IdRequest } from "../../model/detail.vm";
+import { Data, Detail, IdRequest } from "../../model/detail.vm";
 import ls from "../../common-app/localStorage";
 import { datefinally, hoursUtil } from "../../common/utils";
+import {UseContextGeneral} from "../../core/useContext/useContext";
 
-//TODO
 const PodcastContainer = ({ podcastId }: IdRequest) => {
-  const [podcast, setPodcast] = useState<Data[]>(ls.get("detail", []));
-  const [timeStamp, setTimesTamp] = useState<number>(
-    ls.get("timestamp-detail", 0)
-  );
-  const [isTime, setIsTime] = useState<boolean>(false);
+  const {
+    podcast,
+    detail,
+    setDetail,
+    timeStamp,
+    setTimesTamp,
+    isTime,
+    setIsTime,
+  } = useContext(UseContextGeneral);
+
+  //TODO revisar
+  const getSummary = () => {
+    let detailCard: any = [];
+    podcast.filter((pod: any) => {
+      if(pod.id === detail[0].id.toString()){
+        return detailCard = ({...detail,summary: pod.summary})
+      }
+    });
+    return detailCard;
+  }
 
   useEffect(() => {
     const repository = new DetailRepository();
     repository.execute({ podcastId }).then((pod: Data[]) => {
-      setPodcast(pod);
+      setDetail(pod);
       setTimesTamp(hoursUtil());
       setIsTime(datefinally(timeStamp));
     });
   }, [podcastId]);
 
   useEffect(() => {
-    ls.set("detail", podcast);
+    ls.set("detail", detail);
     ls.set("timestamp-detail", timeStamp);
   }, [isTime]);
 
-  return <DetailComponent podcast={podcast} />;
+  return <DetailComponent podcast={getSummary()} />;
 };
 
 PodcastContainer.propTypes = {

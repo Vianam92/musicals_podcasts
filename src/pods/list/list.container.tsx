@@ -9,24 +9,27 @@ import { datefinally, hoursUtil } from "../../common/utils";
 interface Search {
   podcastSearch: string;
 }
-//TODO refactor
+
 const ListContainer = ({ podcastSearch }: Search) => {
-  const [podcast, setPodcast] = useState<List[]>(ls.get("podcast", []));
-  const [timeStamp, setTimesTamp] = useState<number>(
-    ls.get("timestamp-list", 0)
-  );
-  const [isTime, setIsTime] = useState<boolean>(false);
-  const { setIsLoader } = useContext(UseContextGeneral);
+  const {
+    setIsLoader,
+    podcast,
+    setPodcast,
+    timeStamp,
+    setTimesTamp,
+    isTime,
+    setIsTime,
+  } = useContext(UseContextGeneral);
 
   useEffect(() => {
     const repository = new ListRepository();
     setIsLoader(true);
-      repository.execute().then((data: List[]) => {
-        setPodcast(data);
-        setTimesTamp(hoursUtil());
-        setIsTime(datefinally(timeStamp));
-        setIsLoader(false);
-      });
+    repository.execute().then((data: List[]) => {
+      setPodcast(data);
+      setTimesTamp(hoursUtil());
+      setIsTime(datefinally(timeStamp));
+      setIsLoader(false);
+    });
   }, []);
 
   useEffect(() => {

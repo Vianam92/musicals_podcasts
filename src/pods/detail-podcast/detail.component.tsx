@@ -11,7 +11,7 @@ const DetailComponent = ({ podcast }: Detail) => {
 };
 
 DetailComponent.propTypes = {
-  podcast: PropTypes.array,
+  podcast: PropTypes.object,
 };
 
 export default DetailComponent;

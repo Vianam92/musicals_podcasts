@@ -11,7 +11,8 @@ export interface Data {
     artwork: string;
     name: string;
     artist: string;
-    feedUrl: string;
+    feedUrl?: string;
+    summary?: string;
 }
 
 export interface IdRequest{
