@@ -10,6 +10,6 @@ export class EpisodesRepository {
     console.log("repo", detail)
     const getEpisodesRepository = new EpisodesService();
     const detailData = await getEpisodesRepository.getEpisodesApiService({detail});
-    console.log(detailData)
+    console.log(Object.values(detailData))
   }
 }

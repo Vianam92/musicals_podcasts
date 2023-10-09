@@ -2,14 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { UseContextGeneral } from "../../core/useContext/useContext";
 import { EpisodesRepository } from "./episodes.repository";
+import EpisodesComponent from "./episodes.component";
 
 const EpisodesContainer = () => {
   const [episodes, setEpisodes] = useState<any>([])
   const {
     detail
   } = useContext(UseContextGeneral);
-
-  console.log(detail)
 
   useEffect(() => {
     const repository = new EpisodesRepository();
@@ -20,10 +19,7 @@ const EpisodesContainer = () => {
 
   console.log(episodes)
 
-  return (
-    <>
-     <h1>Hola</h1>
-    </>
+  return (<EpisodesComponent detail = {detail}/>
   );
 };
 
