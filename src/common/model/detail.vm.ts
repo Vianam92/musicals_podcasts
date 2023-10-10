@@ -30,6 +30,7 @@ export interface IdRequest{
 }
 
 export interface Detail{
+    id?: string | number;
     detail?: Data[];
     episodes?: Data[];
     episode?: Data[];

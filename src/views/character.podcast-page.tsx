@@ -3,7 +3,7 @@ import EpisodesContainer from '../pods/episodes/episode.container';
 
 const CharacterPodcast = () => {
   const { podcastId, episodeId } = useParams<string>();
-  console.log(podcastId, episodeId)
+
     return (
       <EpisodesContainer podcastId={podcastId} episodeId={episodeId}/>
     );

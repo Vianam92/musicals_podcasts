@@ -1,4 +1,4 @@
-import FilterPodcast from "../pods/filter/filter.podacast";
+import FilterPodcast from "../pods/filter/filter.podcast";
 import ListContainer from "../pods/list/list.container";
 import { useState } from "react";
 import SectionLayout from "../layout/center.layout";
