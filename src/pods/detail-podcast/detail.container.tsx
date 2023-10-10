@@ -2,9 +2,9 @@ import { useEffect, useContext } from "react";
 import DetailComponent from "./detail.component";
 import PropTypes from "prop-types";
 import { DetailRepository } from "./detail.repository";
-import { IdRequest } from "../../model/detail.vm";
+import { IdRequest } from "../../common/model/detail.vm";
 import ls from "../../common-app/localStorage";
-import { datefinally, hoursUtil } from "../../common/utils";
+import { datefinally, hoursUtil } from "../../common/utils/utils";
 import { UseContextGeneral } from "../../core/useContext/useContext";
 
 const PodcastContainer = ({ podcastId }: IdRequest) => {

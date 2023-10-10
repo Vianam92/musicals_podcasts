@@ -1,4 +1,4 @@
-import { Entry, Feed } from "../../model/list.vm";
+import { Entry, Feed } from "../../common/model/list.vm";
 
 export const mapPodcastFromApi = (podcast: Entry) => ({
     id: podcast.id.attributes["im:id"],

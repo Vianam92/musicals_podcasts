@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
-import { List } from "../../model/list.vm";
+import { List } from "../../common/model/list.vm";
 import { ImageStyled, ListStyle } from "../../styled/styled.component";
 import "./list.css";
 

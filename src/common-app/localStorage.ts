@@ -1,5 +1,5 @@
-import { List } from "../model/list.vm";
-import { Data } from '../model/detail.vm';
+import { List } from "../common/model/list.vm";
+import { Data } from '../common/model/detail.vm';
 
 const get = (key: string, defaultData: List[] | Data[] | number) => {
   const data = localStorage.getItem(key);

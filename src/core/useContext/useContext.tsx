@@ -1,7 +1,7 @@
 import React, { useState, createContext } from "react";
-import { List } from "../../model/list.vm";
+import { List } from "../../common/model/list.vm";
 import ls from "../../common-app/localStorage";
-import { Data } from "../../model/detail.vm";
+import { Data } from "../../common/model/detail.vm";
 
 type ContextProviderProps = {
   children: React.ReactNode;

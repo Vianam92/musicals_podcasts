@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import CardComponent from "../../common/card";
-import CardEpisodesComponent from "../../common/card.episodes";
-import { Detail, IdRequest } from "../../model/detail.vm";
+import CardComponent from "../../common/card/card";
+import CardEpisodesComponent from "../../common/card-episodes/card.episodes";
+import { Detail, IdRequest } from "../../common/model/detail.vm";
 import SectionEpisodesLayout from "../../layout/episodes.layout";
 
 interface Props{

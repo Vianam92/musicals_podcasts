@@ -1,6 +1,6 @@
 import { DetailService } from "./detail.api";
 import mapPodcastCollectionFromApi from "./detail.mapper";
-import { Data, IdRequest } from "../../model/detail.vm";
+import { Data, IdRequest } from "../../common/model/detail.vm";
 
 export class DetailRepository {
   async execute({podcastId}: IdRequest): Promise<Data[]> {

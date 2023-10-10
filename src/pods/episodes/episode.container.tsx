@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { UseContextGeneral } from "../../core/useContext/useContext";
 import EpisodesComponent from "./episodes.component";
-import { IdRequest } from "../../model/detail.vm";
+import { IdRequest } from "../../common/model/detail.vm";
 
 const EpisodesContainer = ({podcastId, episodeId}: IdRequest) => {
 

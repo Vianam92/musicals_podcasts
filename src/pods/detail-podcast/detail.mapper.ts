@@ -1,4 +1,4 @@
-import { DetailData, DetailResult } from "../../model/detail.vm";
+import { DetailData, DetailResult } from "../../common/model/detail.vm";
 
 const mapPodcastFromApi = (podcast: DetailData) => ({
   id: podcast.collectionId,

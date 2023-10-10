@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Data, Detail } from "../model/detail.vm";
-import "./card.css";
+import '../card.css';
 import { ListImage, Image , Title, TitleSpan, TitleBy, ListDescription, DescriptionSpan} from "./card.styled";
 
 const CardComponent = ({ detail}: Detail) => {

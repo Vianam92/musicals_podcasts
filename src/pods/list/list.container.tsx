@@ -2,10 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import { ListRepository } from "./list.repository";
 import ListComponent from "./list.component";
 import PropTypes from "prop-types";
-import { List } from "../../model/list.vm";
+import { List } from "../../common/model/list.vm";
 import { UseContextGeneral } from "../../core/useContext/useContext";
 import ls from "../../common-app/localStorage";
-import { datefinally, hoursUtil } from "../../common/utils";
+import { datefinally, hoursUtil } from "../../common/utils/utils";
 interface Search {
   podcastSearch: string;
 }

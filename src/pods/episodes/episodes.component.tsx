@@ -1,4 +1,4 @@
-import CardComponent from "../../common/card";
+import CardComponent from "../../common/card/card";
 import PropTypes from "prop-types";
 import SectionLayout from "../../layout/center.layout";
 import AudioComponent from "../../common/audio";

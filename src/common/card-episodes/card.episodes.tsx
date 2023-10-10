@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
-import { Data, Detail, IdRequest } from "../model/detail.vm";
+import { Data, IdRequest } from "../model/detail.vm";
 import { ThCard, TrCard, TdCard } from "./card.episodes.styled";
 import { Link } from "react-router-dom";
-import "./card.css";
+import "../card.css";
+import { convertDateFormat } from "../utils/change.format";
 
 interface Props {
   episode: Data[];
@@ -10,11 +11,7 @@ interface Props {
 }
 
 const CardEpisodesComponent = ({ episode, podcastId }: Props) => {
-  //TODO sacar fuera
-  function convertDateFormat(string: string) {
-    var info = string.split("-").reverse().join("/");
-    return info;
-  }
+  
   return (
     <article className="article-episodes">
       <h2>
@@ -33,7 +30,7 @@ const CardEpisodesComponent = ({ episode, podcastId }: Props) => {
             return (
               <TrCard key={`${value.date.slice(2, 4)}-${value.idTrack}`}>
                 <TdCard>
-                  <Link to={`podcast/${podcastId}/episode/${value.idTrack}`}>
+                  <Link to={`podcast/${podcastId}/episode/${value.idTrack.toString()}`}>
                     {value.trackName}
                   </Link>
                 </TdCard>
