@@ -15,16 +15,18 @@ export interface Data {
     id?: string | number;
     artwork: string;
     trackName: string;
-    artist: string;
+    artist?: string;
     collection?: string;
     summary?: string;
     date: string;
     url?: string;
     description: string;
+    idTrack: string;
 }
 
 export interface IdRequest{
     podcastId?: string | undefined;
+    episodeId?: string | undefined;
 }
 
 export interface Detail{

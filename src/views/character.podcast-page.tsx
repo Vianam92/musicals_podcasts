@@ -2,9 +2,10 @@ import { useParams } from "react-router-dom";
 import EpisodesContainer from '../pods/episodes/episode.container';
 
 const CharacterPodcast = () => {
-  const { podcastId } = useParams<string>();
+  const { podcastId, episodeId } = useParams<string>();
+  console.log(podcastId, episodeId)
     return (
-      <EpisodesContainer podcastId={podcastId} />
+      <EpisodesContainer podcastId={podcastId} episodeId={episodeId}/>
     );
 }
 

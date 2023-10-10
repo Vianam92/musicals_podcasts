@@ -1,7 +1,6 @@
-article{
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+.card-article{
     max-width: 350px;
-    height: auto;
+    max-height: 600px;
     padding: 15px;
 }
 
@@ -9,11 +8,15 @@ ul{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   
 }
 
 .article-episodes{
-    width: 350px;
+    max-width: 450px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: auto;
+    padding: 15px;
 }
 
 .table{

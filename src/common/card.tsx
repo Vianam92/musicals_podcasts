@@ -5,7 +5,7 @@ import { ListImage, Image , Title, TitleSpan, TitleBy, ListDescription, Descript
 
 const CardComponent = ({ detail}: Detail) => {
   return (
-    <article>
+    <article className="card-article">
       {detail ? detail.map((pod: Data) => {
         return (
           <ul key={pod.id}>
