@@ -1,5 +1,7 @@
 import {  EpisodesService } from "./episodes.api";
 import mapPodcastCollectionFromApi from "./episodes.mapper";
+const cheerio = require('cheerio');
+
 
 interface Request {
   detail: any
@@ -7,9 +9,8 @@ interface Request {
 
 export class EpisodesRepository {
   async execute({detail}: any): Promise<any> {
-    console.log("repo", detail)
     const getEpisodesRepository = new EpisodesService();
     const detailData = await getEpisodesRepository.getEpisodesApiService({detail});
-    console.log(Object.values(detailData))
+    return cheerio.load(detailData)
   }
 }
