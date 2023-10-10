@@ -1,7 +1,9 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { List } from "../../common/model/list.vm";
-import ls from "../../common-app/localStorage";
+import ls from "../../common/local-storage.ts/localStorage";
 import { Data } from "../../common/model/detail.vm";
+import { ListRepository } from "../../pods/list/list.repository";
+import { datefinally, hoursUtil } from "../../common/utils/utils";
 
 type ContextProviderProps = {
   children: React.ReactNode;
@@ -24,7 +26,7 @@ interface contextUse {
 
 export const UseContextGeneral = createContext({} as contextUse);
 
-export function GeneralContextProvider({ children }: ContextProviderProps) {
+export const GeneralContextProvider = ({ children }: ContextProviderProps) => {
   const [isloader, setIsLoader] = useState<boolean>(false);
   const [podcast, setPodcast] = useState<List[]>(ls.get("podcast", []));
   const [episodes, setEpisodes] = useState<Data[]>([]);
@@ -34,6 +36,22 @@ export function GeneralContextProvider({ children }: ContextProviderProps) {
   );
   const [isTime, setIsTime] = useState<boolean>(false);
 
+  useEffect(() => {
+    const repository = new ListRepository();
+    setIsLoader(true);
+    repository.execute().then((data: List[]) => {
+      setPodcast(data);
+      setTimesTamp(hoursUtil());
+      setIsTime(datefinally(timeStamp));
+      setIsLoader(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    ls.set("podcast", podcast);
+    ls.set("timestamp-list", timeStamp);
+  }, [isTime]);
+
   return (
     <UseContextGeneral.Provider
       value={{
@@ -41,12 +59,14 @@ export function GeneralContextProvider({ children }: ContextProviderProps) {
         setIsLoader,
         podcast,
         setPodcast,
-        detail, setDetail,
+        detail,
+        setDetail,
         timeStamp,
         setTimesTamp,
         isTime,
         setIsTime,
-        episodes, setEpisodes
+        episodes,
+        setEpisodes,
       }}
     >
       {children}

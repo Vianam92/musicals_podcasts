@@ -1,7 +1,7 @@
 import CardComponent from "../../common/card/card";
 import PropTypes from "prop-types";
 import SectionLayout from "../../layout/center.layout";
-import AudioComponent from "../../common/audio";
+import AudioComponent from "../../common-app/audio.component";
 
 const EpisodesComponent = ({ detail }: any) => {
   return (

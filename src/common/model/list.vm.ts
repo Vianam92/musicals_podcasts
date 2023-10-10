@@ -7,6 +7,10 @@ export interface List {
     summary?: string;
 }
 
+export interface Search {
+    podcastSearch: string;
+  }
+
 export interface Request{
     feed: Feed;
 } 

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import LoaderHeader from "../common-app/loader";
+import LoaderHeader from "../common/loader/loader";
 import {UseContextGeneral} from "../core/useContext/useContext";
 import { HeaderStyled, Title } from "../styled/styled.component";
 

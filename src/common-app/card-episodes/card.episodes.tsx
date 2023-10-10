@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-import { Data, IdRequest } from "../model/detail.vm";
+import { Data, IdRequest } from "../../common/model/detail.vm";
 import { ThCard, TrCard, TdCard } from "./card.episodes.styled";
 import { Link } from "react-router-dom";
-import "../card.css";
-import { convertDateFormat } from "../utils/change.format";
+import "../../common/card.css";
+import { convertDateFormat } from "../../common/utils/change.format";
 
 interface Props {
   episode: Data[];
@@ -30,7 +30,7 @@ const CardEpisodesComponent = ({ episode, podcastId }: Props) => {
             return (
               <TrCard key={`${value.date.slice(2, 4)}-${value.idTrack}`}>
                 <TdCard>
-                  <Link to={`podcast/${podcastId}/episode/${value.idTrack.toString()}`}>
+                  <Link to={`podcast/${podcastId}/episode/${value.idTrack}`}>
                     {value.trackName}
                   </Link>
                 </TdCard>
