@@ -2,14 +2,15 @@ import PropTypes from "prop-types";
 import CardComponent from "../../common/card";
 import CardEpisodesComponent from "../../common/card.episodes";
 import SectionLayout from "../../layout/center.layout";
+import { Detail } from "../../model/detail.vm";
 
-const DetailComponent = ({ detail }: any) => {
+const DetailComponent = ({ detail}: Detail) => {
 
   return (
     <>
       <SectionLayout>
-        <CardComponent detail={detail} />
-        <CardEpisodesComponent />
+        <CardComponent detail={detail}/>
+        <CardEpisodesComponent detail={detail}/>
       </SectionLayout>
     </>
   );
@@ -17,6 +18,7 @@ const DetailComponent = ({ detail }: any) => {
 
 DetailComponent.propTypes = {
   detail: PropTypes.array,
+
 };
 
 export default DetailComponent;

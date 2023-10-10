@@ -1,16 +1,11 @@
+import { IdRequest } from "../../model/detail.vm";
 import {  EpisodesService } from "./episodes.api";
 import mapPodcastCollectionFromApi from "./episodes.mapper";
-const cheerio = require('cheerio');
-
-
-interface Request {
-  detail: any
-}
 
 export class EpisodesRepository {
-  async execute({detail}: any): Promise<any> {
+  async execute({podcastId}: IdRequest): Promise<any> {
     const getEpisodesRepository = new EpisodesService();
-    const detailData = await getEpisodesRepository.getEpisodesApiService({detail});
-    return cheerio.load(detailData)
+    const detailData = await getEpisodesRepository.getEpisodesApiService({ podcastId });
+    console.log('rep', detailData);
   }
 }

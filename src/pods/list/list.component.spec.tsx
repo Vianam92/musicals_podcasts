@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import ListComponent from "../../../pods/list/list.component";
+import ListComponent from "./list.component";
 import { BrowserRouter as Router } from "react-router-dom";
 
 describe("List Component", () => {

@@ -1,18 +1,24 @@
 export interface DetailData {
-    trackId: string;
+    artistId?: string | number;
+    collectionId?: string | number;
     artworkUrl600: string;
     trackName: string;
     artistName: string;
-    feedUrl: string;
+    collectionViewUrl: string;
+    trackId: string;
+    releaseDate: string;
+    previewUrl?: string;
 }
 
 export interface Data {
-    id: string;
+    id?: string | number;
     artwork: string;
-    name: string;
+    trackName: string;
     artist: string;
-    feedUrl?: string;
+    collection?: string;
     summary?: string;
+    date: string;
+    url?: string;
 }
 
 export interface IdRequest{
@@ -20,7 +26,7 @@ export interface IdRequest{
 }
 
 export interface Detail{
-    podcast: Data[];
+    detail: Data[];
 }
 
 export interface DetailResult{

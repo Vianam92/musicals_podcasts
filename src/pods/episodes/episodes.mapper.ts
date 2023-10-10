@@ -9,7 +9,7 @@ export const mapPodcastFromApi = (episode: any) => ({
 });
 
 const mapPodcastCollectionFromApi = (podcastCollection: any) =>
-  podcastCollection.items.map((collection: any) =>
+  podcastCollection.results.map((collection: any) =>
     mapPodcastFromApi(collection)
   );
 

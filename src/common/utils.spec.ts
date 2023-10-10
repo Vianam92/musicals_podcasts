@@ -1,4 +1,4 @@
-import {datefinally, hoursUtil} from "../../common/utils";
+import {datefinally, hoursUtil} from "./utils";
 
 describe("testing utils", () => {
     it("datefinally return false", () => {

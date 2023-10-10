@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
+import { Detail } from "../model/detail.vm";
 
-const CardEpisodesComponent = ({ podcast }: any) => {
+const CardEpisodesComponent = ({ detail }: Detail) => {
   return (
     <article>
       <h2>
@@ -34,10 +35,6 @@ const CardEpisodesComponent = ({ podcast }: any) => {
       </table>
     </article>
   );
-};
-
-CardEpisodesComponent.propTypes = {
-  podcast: PropTypes.object,
 };
 
 export default CardEpisodesComponent;
