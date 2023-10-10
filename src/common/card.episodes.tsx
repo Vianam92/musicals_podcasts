@@ -1,40 +1,52 @@
 import PropTypes from "prop-types";
-import { Detail } from "../model/detail.vm";
+import { Detail, IdRequest } from '../model/detail.vm';
+import { ThCard, TrCard, TdCard } from "./card.episodes.styled";
+import { Link } from "react-router-dom";
+import "./card.css";
 
-const CardEpisodesComponent = ({ detail }: Detail) => {
+interface Props{
+  episode:Detail[];
+  podcastId:IdRequest;
+}
+
+const CardEpisodesComponent = ({ episode, podcastId }: Props) => {
+
+  function convertDateFormat(string: string) {
+    var info = string.split('-').reverse().join('/');
+    return info;
+}
   return (
-    <article>
+    <article className="article-episodes">
       <h2>
-        Episodes: <small></small>
+        Episodes: <small>{episode?.length}</small>
       </h2>
       <table>
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Duration</th>
+            <ThCard>Title</ThCard>
+            <ThCard>Date</ThCard>
+            <ThCard>Duration</ThCard>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Soleado</td>
-            <td>Mayormente soleado</td>
-            <td>Parcialmente nublado</td>
-          </tr>
-          <tr>
-            <td>19°C</td>
-            <td>17°C</td>
-            <td>12°C</td>
-          </tr>
-          <tr>
-            <td>E 13 km/h</td>
-            <td>E 11 km/h</td>
-            <td>S 16 km/h</td>
-          </tr>
+        {episode?.slice(0,8).map((value: any) => {
+          return (
+              <TrCard key={`${value.date.slice(2,4)}-${value.idTrack}`}>
+                <TdCard><Link to={`podcast/${podcastId}`}>{value.trackName}</Link></TdCard>
+                <TdCard>{convertDateFormat(value.date.slice(0, 10))}</TdCard>
+                <TdCard>{value.date.slice(11).slice(0, 5)}</TdCard>
+              </TrCard>
+          )
+        })}
         </tbody>
       </table>
     </article>
   );
+};
+
+CardEpisodesComponent.propTypes = {
+  episode: PropTypes.array,
+  podcastId: PropTypes.string,
 };
 
 export default CardEpisodesComponent;

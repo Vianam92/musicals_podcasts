@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-import { Data } from "../model/detail.vm";
+import { Data, Detail } from "../model/detail.vm";
 import "./card.css";
 import { ListImage, Image , Title, TitleSpan, TitleBy, ListDescription, DescriptionSpan} from "./card.styled";
 
-const CardComponent = ({ detail}: any) => {
+const CardComponent = ({ detail}: Detail) => {
   return (
     <article>
       {detail ? detail.map((pod: Data) => {

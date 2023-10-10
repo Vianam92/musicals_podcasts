@@ -1,24 +1,33 @@
 import PropTypes from "prop-types";
 import CardComponent from "../../common/card";
 import CardEpisodesComponent from "../../common/card.episodes";
-import SectionLayout from "../../layout/center.layout";
-import { Detail } from "../../model/detail.vm";
+import { Detail, IdRequest } from "../../model/detail.vm";
+import SectionEpisodesLayout from "../../layout/episodes.layout";
 
-const DetailComponent = ({ detail}: Detail) => {
+interface Props{
+  detail:Detail;
+  episodes:Detail[];
+  podcastId:IdRequest;
+}
 
+
+const DetailComponent = ({ detail, episodes, podcastId }: any) => {
   return (
     <>
-      <SectionLayout>
-        <CardComponent detail={detail}/>
-        <CardEpisodesComponent detail={detail}/>
-      </SectionLayout>
+      <SectionEpisodesLayout>
+        <CardComponent detail={detail} />
+        {episodes?.map((episode: any) => {
+          return <CardEpisodesComponent episode={episode} podcastId={podcastId}/>;
+        })}
+      </SectionEpisodesLayout>
     </>
   );
 };
 
 DetailComponent.propTypes = {
   detail: PropTypes.array,
-
+  episodes: PropTypes.array,
+  podcastId: PropTypes.string,
 };
 
 export default DetailComponent;

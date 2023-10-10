@@ -12,12 +12,15 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
     podcast,
     detail,
     setDetail,
+    episodes,
+    setEpisodes,
     timeStamp,
     setTimesTamp,
     isTime,
     setIsTime,
   } = useContext(UseContextGeneral);
 
+  //TODO separar
   useEffect(() => {
     const repository = new DetailRepository();
     repository.execute({ podcastId }).then((pod: any) => {
@@ -39,7 +42,13 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
           addSummary.push({ ...data, summary: item.summary });
         });
       });
+
+      let newEpisodes: any = [];
+      newIds.map((id: any) => {
+        newEpisodes.push(pod.filter((item:any) => item.idTrack !== id));
+      })
       setDetail(addSummary);
+      setEpisodes(newEpisodes);
       setTimesTamp(hoursUtil());
       setIsTime(datefinally(timeStamp));
     });
@@ -50,7 +59,7 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
     ls.set("timestamp-detail", timeStamp);
   }, [isTime]);
 
-  return <DetailComponent detail={detail} />;
+  return <DetailComponent podcastId={podcastId} detail={detail} episodes={episodes}/>;
 };
 
 PodcastContainer.propTypes = {

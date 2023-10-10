@@ -8,6 +8,7 @@ export interface DetailData {
     trackId: string;
     releaseDate: string;
     previewUrl?: string;
+    description: string;
 }
 
 export interface Data {
@@ -19,6 +20,7 @@ export interface Data {
     summary?: string;
     date: string;
     url?: string;
+    description: string;
 }
 
 export interface IdRequest{
@@ -26,7 +28,9 @@ export interface IdRequest{
 }
 
 export interface Detail{
-    detail: Data[];
+    detail?: Data[];
+    episodes?: Data[];
+    episode?: Data[];
 }
 
 export interface DetailResult{

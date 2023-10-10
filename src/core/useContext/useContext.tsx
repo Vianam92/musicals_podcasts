@@ -13,6 +13,8 @@ interface contextUse {
   podcast: List[];
   setPodcast: React.Dispatch<React.SetStateAction<List[]>>;
   detail: Data[];
+  episodes: Data[];
+  setEpisodes: React.Dispatch<React.SetStateAction<Data[]>>;
   setDetail: React.Dispatch<React.SetStateAction<Data[]>>;
   timeStamp: number;
   setTimesTamp: React.Dispatch<React.SetStateAction<number>>;
@@ -25,6 +27,7 @@ export const UseContextGeneral = createContext({} as contextUse);
 export function GeneralContextProvider({ children }: ContextProviderProps) {
   const [isloader, setIsLoader] = useState<boolean>(false);
   const [podcast, setPodcast] = useState<List[]>(ls.get("podcast", []));
+  const [episodes, setEpisodes] = useState<Data[]>([]);
   const [detail, setDetail] = useState<Data[]>(ls.get("detail", []));
   const [timeStamp, setTimesTamp] = useState<number>(
     ls.get("timestamp-list", 0)
@@ -42,7 +45,8 @@ export function GeneralContextProvider({ children }: ContextProviderProps) {
         timeStamp,
         setTimesTamp,
         isTime,
-        setIsTime
+        setIsTime,
+        episodes, setEpisodes
       }}
     >
       {children}
