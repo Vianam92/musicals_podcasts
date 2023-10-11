@@ -2,7 +2,7 @@ import React, { useState, createContext, useEffect, useContext } from "react";
 import { List } from "../../common/model/list.vm";
 import ls from "../../common/local-storage.ts/localStorage";
 import { Data } from "../../common/model/detail.vm";
-import { ListRepository } from "../../pods/list/list.repository";
+import { listRepository } from "../../pods/list/list.repository";
 import { datefinally, hoursUtil } from "../../common/utils/utils";
 import UseContextLoader from "./useLoader";
 import UseContextTime from "./useTime";
@@ -26,13 +26,13 @@ export const GeneralContextProvider = ({ children }: ContextProviderProps) => {
   const [podcast, setPodcast] = useState<List[]>(ls.get("podcast", []));
   const [episodes, setEpisodes] = useState<Data[]>(ls.get("episodes", []));
   const [detail, setDetail] = useState<Data[]>(ls.get("detail", []));
-  const {setIsLoader} = useContext(UseContextLoader);
-  const {timeStamp, setTimesTamp,isTime, setIsTime} = useContext(UseContextTime)
-  
+  const { setIsLoader } = useContext(UseContextLoader);
+  const { timeStamp, setTimesTamp, isTime, setIsTime } =
+    useContext(UseContextTime);
+
   useEffect(() => {
-    const repository = new ListRepository();
     setIsLoader(true);
-    repository.execute().then((data: List[]) => {
+    listRepository().then((data: List[]) => {
       setPodcast(data);
       setTimesTamp(hoursUtil());
       setIsTime(datefinally(timeStamp));
@@ -59,6 +59,6 @@ export const GeneralContextProvider = ({ children }: ContextProviderProps) => {
       {children}
     </UseContextGeneral.Provider>
   );
-}
+};
 
 export default UseContextGeneral;

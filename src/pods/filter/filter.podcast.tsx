@@ -2,17 +2,12 @@ import PropTypes from 'prop-types';
 import React from "react";
 import "./filter.css";
 import { TitleH2, InputSearch } from '../../common/styled/styled.component';
-
-//TODO
-
 interface Props {
     podcastSearch: string;
     handlerInput: React.Dispatch<React.SetStateAction<any>>
 }
 
 const FilterPodcast = ({ handlerInput, podcastSearch }: Props) => {
-  console.log(typeof handlerInput);
-    
   const handlerInputSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const value: string = e.target.value;

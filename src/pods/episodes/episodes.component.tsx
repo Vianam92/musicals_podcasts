@@ -1,6 +1,6 @@
 import CardComponent from "../../common/card/card";
 import PropTypes from "prop-types";
-import AudioComponent from "../../common-app/audio.component";
+import AudioComponent from "../../common-app/audio-episodes/audio.component";
 import { Data } from "../../common/model/detail.vm";
 import SectionEpisodesLayout from "../../common/layout/episodes.layout";
 

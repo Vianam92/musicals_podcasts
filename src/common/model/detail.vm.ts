@@ -24,6 +24,12 @@ export interface Data {
     idTrack: string | number;
 }
 
+export interface CardEpisode {
+    trackName: string;
+    date: string;
+    idTrack?: string | number;
+}
+
 export interface EpisodesAudio {
     trackName: string;
     url: string | undefined;

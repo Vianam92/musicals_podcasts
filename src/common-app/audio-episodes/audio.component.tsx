@@ -1,5 +1,5 @@
-import { EpisodesAudio } from "../common/model/detail.vm";
-import { CardsEpisodes } from "../common/styled/styled.component";
+import { EpisodesAudio } from "../../common/model/detail.vm";
+import { CardsEpisodes } from "../../common/styled/styled.component";
 import "./audio.css";
 
 const AudioComponent = (props: EpisodesAudio) => {

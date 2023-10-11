@@ -1,11 +1,7 @@
-import { ListService } from "./list.api";
+import { getlistApiService } from "./list.api";
 import mapPodcastCollectionFromApi from "./list.mapper";
-import { List } from "../../common/model/list.vm";
 
-export class ListRepository {
-  async execute(): Promise<List[]> {
-    const getListRepository = new ListService();
-    const listData = await getListRepository.getlistApiService();
+export const listRepository = async () => {
+    const listData = await getlistApiService();
     return mapPodcastCollectionFromApi(listData.feed);
   }
-}

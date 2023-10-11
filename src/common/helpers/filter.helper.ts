@@ -25,7 +25,6 @@ export const filterPodcast = (podcast: List[], podcastSearch: string) => {
   };
   
   const addSummary = (detail: Data[], podcast: List[]) => {
-    console.log(findPods(newIdsPods(detail), podcast));
     let addSummary: any = [];
     let newDetail: any = [];
     newIdsPods(detail).map((id: any) => newDetail.push(detail.find((item:any) => item.id === id)))
@@ -48,7 +47,6 @@ export const filterPodcast = (podcast: List[], podcastSearch: string) => {
   export const newDataFilter = (podcast: List[], detail: Data[]) => {
     const summary = addSummary(detail, podcast);
     const episodes = getEpisodes(detail);
-    console.log(summary);
   
     return { summary, episodes };
   };
