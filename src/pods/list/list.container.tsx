@@ -5,10 +5,9 @@ import { List, Search } from "../../common/model/list.vm";
 import { UseContextGeneral } from "../../core/useContext/useContext";
 import { filterPodcast } from "../../common/helpers/filter.helper";
 
-
 const ListContainer = ({ podcastSearch }: Search) => {
   const {
-    podcast,
+    podcast
   } = useContext(UseContextGeneral);
 
   return (

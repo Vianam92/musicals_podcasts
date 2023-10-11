@@ -5,6 +5,7 @@ import { Data } from "../../common/model/detail.vm";
 import { ListRepository } from "../../pods/list/list.repository";
 import { datefinally, hoursUtil } from "../../common/utils/utils";
 import UseContextLoader from "./useLoader";
+import UseContextTime from "./useTime";
 
 type ContextProviderProps = {
   children: React.ReactNode;
@@ -17,10 +18,6 @@ interface contextUse {
   episodes: Data[];
   setEpisodes: React.Dispatch<React.SetStateAction<Data[]>>;
   setDetail: React.Dispatch<React.SetStateAction<Data[]>>;
-  timeStamp: number;
-  setTimesTamp: React.Dispatch<React.SetStateAction<number>>;
-  isTime: boolean;
-  setIsTime: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const UseContextGeneral = createContext({} as contextUse);
@@ -29,11 +26,8 @@ export const GeneralContextProvider = ({ children }: ContextProviderProps) => {
   const [podcast, setPodcast] = useState<List[]>(ls.get("podcast", []));
   const [episodes, setEpisodes] = useState<Data[]>([]);
   const [detail, setDetail] = useState<Data[]>(ls.get("detail", []));
-  const [timeStamp, setTimesTamp] = useState<number>(
-    ls.get("timestamp-list", 0)
-  );
-  const [isTime, setIsTime] = useState<boolean>(false);
   const {setIsLoader} = useContext(UseContextLoader);
+  const {timeStamp, setTimesTamp,isTime, setIsTime} = useContext(UseContextTime)
   
   useEffect(() => {
     const repository = new ListRepository();
@@ -48,7 +42,7 @@ export const GeneralContextProvider = ({ children }: ContextProviderProps) => {
 
   useEffect(() => {
     ls.set("podcast", podcast);
-    ls.set("timestamp-list", timeStamp);
+    ls.set("timestamp-podcast", timeStamp);
   }, [isTime]);
 
   return (
@@ -58,10 +52,6 @@ export const GeneralContextProvider = ({ children }: ContextProviderProps) => {
         setPodcast,
         detail,
         setDetail,
-        timeStamp,
-        setTimesTamp,
-        isTime,
-        setIsTime,
         episodes,
         setEpisodes,
       }}
