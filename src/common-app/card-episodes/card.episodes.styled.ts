@@ -18,3 +18,7 @@ export const TdCard = styled.td`
   padding:2px 5px;
   margin: 10px 5px;
 `;
+
+export const TdLast = styled.td`
+text-align: right;
+`

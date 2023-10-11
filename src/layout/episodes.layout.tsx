@@ -1,10 +1,10 @@
 import React from "react";
-import "./episodes.layout.css";
+import { LayoutFlex } from "../styled/styled.component";
 interface Props {
   children: React.ReactNode;
 }
 const SectionEpisodesLayout = ({ children }: Props) => {
-  return <section className="layout-flex">{children}</section>;
+  return <LayoutFlex>{children}</LayoutFlex>;
 };
 
 export default SectionEpisodesLayout;

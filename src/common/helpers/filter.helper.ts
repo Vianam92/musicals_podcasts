@@ -1,4 +1,4 @@
-import { Detail } from "../model/detail.vm";
+import { Data, Detail, IdRequest } from "../model/detail.vm";
 import { List } from "../model/list.vm";
 
 export const filterPodcast = (podcast: List[], podcastSearch: string) => {
@@ -9,6 +9,7 @@ export const filterPodcast = (podcast: List[], podcastSearch: string) => {
     ): [];
   };
 
+  //TODO poner type and refactor
 export const newDataFilter = (podcast: List[], detail: Detail[]) => {
   let ids = new Set();
   detail.filter((item:Detail) => ids.add(item.id));
@@ -25,3 +26,9 @@ export const newDataFilter = (podcast: List[], detail: Detail[]) => {
 
   return {addSummary, newEpisodes};
 }
+
+export const findEpisode = (episodes: Data[], {episodeId}: IdRequest) => {
+  let newEpisode: Data[] = [];
+  episodes.map((episode: any) => newEpisode.push(episode.find((value: Data) => value.idTrack === Number(episodeId))));
+  return newEpisode;
+};

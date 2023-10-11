@@ -24,7 +24,7 @@ export const UseContextGeneral = createContext({} as contextUse);
 
 export const GeneralContextProvider = ({ children }: ContextProviderProps) => {
   const [podcast, setPodcast] = useState<List[]>(ls.get("podcast", []));
-  const [episodes, setEpisodes] = useState<Data[]>([]);
+  const [episodes, setEpisodes] = useState<Data[]>(ls.get("episodes", []));
   const [detail, setDetail] = useState<Data[]>(ls.get("detail", []));
   const {setIsLoader} = useContext(UseContextLoader);
   const {timeStamp, setTimesTamp,isTime, setIsTime} = useContext(UseContextTime)

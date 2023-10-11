@@ -28,6 +28,7 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
     useEffect(() => {
       ls.set("detail", detail);
       ls.set("timestamp-detail", timeStamp);
+      ls.set("episodes", episodes);
     }, [isTime]);
 
   return (

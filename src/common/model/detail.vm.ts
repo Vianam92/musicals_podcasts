@@ -21,7 +21,14 @@ export interface Data {
     date: string;
     url?: string;
     description: string;
-    idTrack: string;
+    idTrack: string | number;
+}
+
+export interface EpisodesAudio {
+    trackName: string;
+    url: string | undefined;
+    description: string;
+    idTrack?: string | number;
 }
 
 export interface IdRequest{

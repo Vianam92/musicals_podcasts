@@ -1,10 +1,10 @@
 import React from "react";
-import "./center.css";
+import { LayoutGrid } from "../styled/styled.component";
 interface Props {
   children: React.ReactNode;
 }
 const SectionLayout = ({ children }: Props) => {
-  return <section className="layout-grid">{children}</section>;
+  return <LayoutGrid>{children}</LayoutGrid>;
 };
 
 export default SectionLayout;

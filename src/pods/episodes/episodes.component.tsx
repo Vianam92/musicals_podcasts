@@ -2,20 +2,35 @@ import CardComponent from "../../common/card/card";
 import PropTypes from "prop-types";
 import SectionLayout from "../../layout/center.layout";
 import AudioComponent from "../../common-app/audio.component";
+import { Data, EpisodesAudio } from "../../common/model/detail.vm";
+import SectionEpisodesLayout from "../../layout/episodes.layout";
 
-const EpisodesComponent = ({ detail }: any) => {
+interface Prop {
+  detail: Data[];
+  episodes: Data[];
+}
+
+const EpisodesComponent = ({ detail, episodes }: Prop) => {
   return (
     <>
-      <SectionLayout>
+      <SectionEpisodesLayout>
         <CardComponent detail={detail}></CardComponent>
-        <AudioComponent></AudioComponent>
-      </SectionLayout>
+        {episodes.map((episode: Data) => (
+          <AudioComponent
+            key={episode.idTrack}
+            description={episode.description}
+            trackName={episode.trackName}
+            url={episode.url}
+          ></AudioComponent>
+        ))}
+      </SectionEpisodesLayout>
     </>
   );
 };
 
 EpisodesComponent.propTypes = {
   detail: PropTypes.array,
+  episodes: PropTypes.array,
 };
 
 export default EpisodesComponent;

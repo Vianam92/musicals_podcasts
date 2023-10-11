@@ -2,21 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { UseContextGeneral } from "../../core/useContext/useContext";
 import EpisodesComponent from "./episodes.component";
-import { IdRequest } from "../../common/model/detail.vm";
+import { Data, IdRequest } from "../../common/model/detail.vm";
+import { findEpisode } from "../../common/helpers/filter.helper";
 
-const EpisodesContainer = ({podcastId, episodeId}: IdRequest) => {
+const EpisodesContainer = ({ episodeId }: IdRequest) => {
+  const { detail, episodes } = useContext(UseContextGeneral);
 
-  //TODO hacer un find
-  const {
-    detail
-  } = useContext(UseContextGeneral);
-
-  return (<EpisodesComponent detail = {detail}/>
-  );
+  return <EpisodesComponent detail={detail} episodes={findEpisode(episodes, {episodeId})} />;
 };
 
 EpisodesContainer.propTypes = {
-  podcastId: PropTypes.string,
   episodeId: PropTypes.string,
 };
 

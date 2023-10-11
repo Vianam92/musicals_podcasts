@@ -15,8 +15,8 @@ const DetailComponent = ({ detail, episodes, podcastId }: any) => {
     <>
       <SectionEpisodesLayout>
         <CardComponent detail={detail} />
-        {episodes?.map((episode: any) => {
-          return <CardEpisodesComponent episode={episode} podcastId={podcastId}/>;
+        {episodes?.map((episode: any, index: any) => {
+          return <CardEpisodesComponent key={index} episode={episode} podcastId={podcastId}/>;
         })}
       </SectionEpisodesLayout>
     </>

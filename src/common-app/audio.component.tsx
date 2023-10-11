@@ -1,20 +1,31 @@
-const AudioComponent = () => {
+import { EpisodesAudio } from "../common/model/detail.vm";
+import { CardsEpisodes } from "../styled/styled.component";
+import "./audio.css";
+
+const AudioComponent = (props: EpisodesAudio) => {
+
   return (
-    <article>
-      <h1>Title</h1>
+    <CardsEpisodes>
+      <h1>{props.trackName.slice(13)}</h1>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis,
-        adipisci possimus? Nisi blanditiis ratione quia, inventore
-        necessitatibus possimus, voluptas nesciunt quidem facilis reiciendis
-        quis accusamus commodi neque quo vel nulla?
+      {props.description.slice(0,300)}
       </p>
-      <audio src="rabbit320.webm" controls>
+      <p>
+      {props.description.slice(301, 700)}
+      </p>
+      <p>
+      {props.description.slice(701, 1500)}
+      </p>
+      <p>
+      {props.description.slice(1501)}
+      </p>
+      <audio src={props.url} controls>
         <p>
           Tu navegador no soporta HTML5 video. Aquí está el
-          <a href="rabbit320.webm">enlace del video</a>.
+          <a href={props.url}>enlace del video</a>.
         </p>
       </audio>
-    </article>
+    </CardsEpisodes>
   );
 };
 
