@@ -1,16 +1,16 @@
 import PropTypes from "prop-types";
 import CardComponent from "../../common/card/card";
 import CardEpisodesComponent from "../../common-app/card-episodes/card.episodes";
-import { Detail, IdRequest } from "../../common/model/detail.vm";
-import SectionEpisodesLayout from "../../layout/episodes.layout";
+import { Data, Detail, IdRequest } from "../../common/model/detail.vm";
+import SectionEpisodesLayout from "../../common/layout/episodes.layout";
 
 interface Props{
-  detail:Detail;
+  detail:Data[];
   episodes:Detail[];
-  podcastId:IdRequest;
+  podcastId: string | undefined;
 }
 
-const DetailComponent = ({ detail, episodes, podcastId }: any) => {
+const DetailComponent = ({ detail, episodes, podcastId }: Props) => {
   return (
     <>
       <SectionEpisodesLayout>

@@ -1,7 +1,7 @@
 import FilterPodcast from "../pods/filter/filter.podcast";
 import ListContainer from "../pods/list/list.container";
 import { useState } from "react";
-import SectionLayout from "../layout/center.layout";
+import SectionLayout from "../common/layout/center.layout";
 
 const Home = () => {
   const [podcastSearch, setPodcastSearch] = useState<string>("");

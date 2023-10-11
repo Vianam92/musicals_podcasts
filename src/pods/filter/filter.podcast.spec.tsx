@@ -8,7 +8,10 @@ describe('Filter component specs', () => {
     const value: any = 'joe';
   it('should get input value', () => {
   
-    render(<Router><FilterPodcast handlerInput={value} podcastSearch={search}/></Router>);
+   render(
+    <Router> 
+      <FilterPodcast handlerInput={value} podcastSearch={search}/>
+    </Router>)
 
     const inputElement = screen.getByRole('textbox') as HTMLInputElement;
 

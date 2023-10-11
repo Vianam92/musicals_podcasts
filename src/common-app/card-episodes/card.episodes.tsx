@@ -4,11 +4,11 @@ import { ThCard, TrCard, TdCard, TdLast } from "./card.episodes.styled";
 import { Link } from "react-router-dom";
 import "../../common/card.css";
 import { convertDateFormat } from "../../common/utils/change.format";
-import { CardsEpisodes } from "../../styled/styled.component";
+import { CardsEpisodes } from "../../common/styled/styled.component";
 
 interface Props {
   episode: Data[];
-  podcastId: IdRequest;
+  podcastId: string | undefined;
 }
 
 const CardEpisodesComponent = ({ episode, podcastId }: Props) => {

@@ -4,7 +4,7 @@ import ListComponent from "./list.component";
 import { BrowserRouter as Router } from "react-router-dom";
 
 describe("List Component", () => {
-  it("should  render", () => {
+  it("should show author", () => {
     const podcast = {
       id: "2545",
       artist: "The Joe",
