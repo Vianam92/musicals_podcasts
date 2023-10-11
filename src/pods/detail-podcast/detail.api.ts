@@ -3,10 +3,15 @@ const cors = "https://cors-anywhere.herokuapp.com/";
 const URL = "https://itunes.apple.com/lookup?id=";
 const queryParams = "&entity=podcastEpisode";
 
-export class DetailService {
-  async getDetailApiService({ podcastId }: IdRequest) {
-    return fetch(`${cors}${URL}${podcastId}${queryParams}`).then((response) =>
-      response.json()
-    );
+export const detailService = async ({ podcastId }: IdRequest) => {
+  try {
+    const response = await fetch(`${cors}${URL}${podcastId}${queryParams}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Fetch error:", error);
   }
-}
+};

@@ -6,7 +6,15 @@ describe("List Repository", () => {
   beforeEach(() => {
     jest
       .spyOn(listApiModule, "getlistApiService")
-      .mockResolvedValue({ feed: [] });
+      .mockResolvedValue([
+        {
+          id: "2545",
+          artist: "The Joe",
+          image: "",
+          title: "The Joe",
+          summary: "Lorem ipsum",
+        },
+      ]);
     jest.spyOn(listMapperModule, "default").mockReturnValue([
       {
         id: "2545",

@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react";
 import DetailComponent from "./detail.component";
 import PropTypes from "prop-types";
-import { DetailRepository } from "./detail.repository";
+import { detailRepository } from "./detail.repository";
 import { IdRequest } from "../../common/model/detail.vm";
 import { datefinally, hoursUtil } from "../../common/utils/utils";
 import UseContextGeneral from "../../core/useContext/useContext";
@@ -16,8 +16,7 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
     useContext(UseContextTime);
 
     useEffect(() => {
-      const repository = new DetailRepository();
-      repository.execute({ podcastId }).then((pod: any) => {
+      detailRepository({ podcastId }).then((pod: any) => {
         setDetail(newDataFilter(podcast, pod).summary);
         setEpisodes(newDataFilter(podcast, pod).episodes);
         setTimesTamp(hoursUtil());
