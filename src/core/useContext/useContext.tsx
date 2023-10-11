@@ -1,17 +1,16 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect, useContext } from "react";
 import { List } from "../../common/model/list.vm";
 import ls from "../../common/local-storage.ts/localStorage";
 import { Data } from "../../common/model/detail.vm";
 import { ListRepository } from "../../pods/list/list.repository";
 import { datefinally, hoursUtil } from "../../common/utils/utils";
+import UseContextLoader from "./useLoader";
 
 type ContextProviderProps = {
   children: React.ReactNode;
 };
 
 interface contextUse {
-  isloader: boolean;
-  setIsLoader: React.Dispatch<React.SetStateAction<boolean>>;
   podcast: List[];
   setPodcast: React.Dispatch<React.SetStateAction<List[]>>;
   detail: Data[];
@@ -27,7 +26,6 @@ interface contextUse {
 export const UseContextGeneral = createContext({} as contextUse);
 
 export const GeneralContextProvider = ({ children }: ContextProviderProps) => {
-  const [isloader, setIsLoader] = useState<boolean>(false);
   const [podcast, setPodcast] = useState<List[]>(ls.get("podcast", []));
   const [episodes, setEpisodes] = useState<Data[]>([]);
   const [detail, setDetail] = useState<Data[]>(ls.get("detail", []));
@@ -35,7 +33,8 @@ export const GeneralContextProvider = ({ children }: ContextProviderProps) => {
     ls.get("timestamp-list", 0)
   );
   const [isTime, setIsTime] = useState<boolean>(false);
-
+  const {setIsLoader} = useContext(UseContextLoader);
+  
   useEffect(() => {
     const repository = new ListRepository();
     setIsLoader(true);
@@ -55,8 +54,6 @@ export const GeneralContextProvider = ({ children }: ContextProviderProps) => {
   return (
     <UseContextGeneral.Provider
       value={{
-        isloader,
-        setIsLoader,
         podcast,
         setPodcast,
         detail,

@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import LoaderHeader from "../common/loader/loader";
-import {UseContextGeneral} from "../core/useContext/useContext";
 import { HeaderStyled, Title } from "../styled/styled.component";
+import UseContextLoader from "../core/useContext/useLoader";
 
 const Header = () => {
-  const { isloader } = useContext(UseContextGeneral);
+  const { isloader } = useContext(UseContextLoader);
 
     return (
       <HeaderStyled>
