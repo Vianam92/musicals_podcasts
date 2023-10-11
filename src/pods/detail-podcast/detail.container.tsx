@@ -18,8 +18,8 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
     useEffect(() => {
       const repository = new DetailRepository();
       repository.execute({ podcastId }).then((pod: any) => {
-        setDetail(newDataFilter(podcast, pod).addSummary);
-        setEpisodes(newDataFilter(podcast, pod).newEpisodes);
+        setDetail(newDataFilter(podcast, pod).summary);
+        setEpisodes(newDataFilter(podcast, pod).episodes);
         setTimesTamp(hoursUtil());
         setIsTime(datefinally(timeStamp));
       });

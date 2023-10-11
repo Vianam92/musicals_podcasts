@@ -1,8 +1,7 @@
 import CardComponent from "../../common/card/card";
 import PropTypes from "prop-types";
-import SectionLayout from "../../layout/center.layout";
 import AudioComponent from "../../common-app/audio.component";
-import { Data, EpisodesAudio } from "../../common/model/detail.vm";
+import { Data } from "../../common/model/detail.vm";
 import SectionEpisodesLayout from "../../layout/episodes.layout";
 
 interface Prop {

@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { UseContextGeneral } from "../../core/useContext/useContext";
 import EpisodesComponent from "./episodes.component";
-import { Data, IdRequest } from "../../common/model/detail.vm";
+import { IdRequest } from "../../common/model/detail.vm";
 import { findEpisode } from "../../common/helpers/filter.helper";
 
 const EpisodesContainer = ({ episodeId }: IdRequest) => {

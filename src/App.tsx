@@ -9,16 +9,17 @@ import { TimeContextProvider } from "./core/useContext/useTime";
 function App() {
   return (
     <div className="App">
-      <LoaderContextProvider>
+      
       <TimeContextProvider>
+      <LoaderContextProvider>
         <GeneralContextProvider>
           <Header />
           <main>
             <RouterComponent />
           </main>
         </GeneralContextProvider>
+        </LoaderContextProvider>
         </TimeContextProvider>
-      </LoaderContextProvider>
     </div>
   );
 }

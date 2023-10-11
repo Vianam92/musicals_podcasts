@@ -9,26 +9,53 @@ export const filterPodcast = (podcast: List[], podcastSearch: string) => {
     ): [];
   };
 
-  //TODO poner type and refactor
-export const newDataFilter = (podcast: List[], detail: Detail[]) => {
-  let ids = new Set();
-  detail.filter((item:Detail) => ids.add(item.id));
-  let newIds = Array.from(ids);
-  let newDetail: any = [];
-  let newPodcast:any=[];
-  newIds.map((id: any) => newPodcast.push(podcast.find((item:any) => item.id === id.toString())))
-  newIds.map((id: any) => newDetail.push(detail.find((item:any) => item.id === id)))
-  let addSummary: any = [];
-  newPodcast.filter((item: any) => newDetail.filter((data: any) => addSummary.push({ ...data, summary: item.summary })));
-
-  let newEpisodes: any = [];
-  newIds.map((id: any) => newEpisodes.push(detail.filter((item:any) => item.idTrack !== id)))
-
-  return {addSummary, newEpisodes};
-}
+  const findPods = (newIds: any, podcast: List[]) => {
+    let newPodcast: any = [];
+    newIds.map((id: []) =>
+      newPodcast.push(podcast.find((item: List) => item.id === id.toString()))
+    );
+    return newPodcast;
+  };
+  
+  const newIdsPods = (detail: Data[]) => {
+    let ids = new Set();
+    detail.filter((item: Detail) => ids.add(item.id));
+    let newIds = Array.from(ids);
+    return newIds;
+  };
+  
+  const addSummary = (detail: Data[], podcast: List[]) => {
+    console.log(findPods(newIdsPods(detail), podcast));
+    let addSummary: any = [];
+    let newDetail: any = [];
+    newIdsPods(detail).map((id: any) => newDetail.push(detail.find((item:any) => item.id === id)))
+    findPods(newIdsPods(detail), podcast).filter((item: any) =>
+    newDetail.filter((data: any) =>
+        addSummary.push({ ...data, summary: item.summary })
+      )
+    );
+    return addSummary;
+  };
+  
+  const getEpisodes = (detail: Data[]) => {
+    let newEpisodes: any = [];
+    newIdsPods(detail).map((id: any) =>
+      newEpisodes.push(detail.filter((item: any) => item.idTrack !== id))
+    );
+    return newEpisodes;
+  };
+  
+  export const newDataFilter = (podcast: List[], detail: Data[]) => {
+    const summary = addSummary(detail, podcast);
+    const episodes = getEpisodes(detail);
+    console.log(summary);
+  
+    return { summary, episodes };
+  };
 
 export const findEpisode = (episodes: Data[], {episodeId}: IdRequest) => {
   let newEpisode: Data[] = [];
-  episodes.map((episode: any) => newEpisode.push(episode.find((value: Data) => value.idTrack === Number(episodeId))));
+  const id = Number(episodeId);
+  episodes.map((episode: any) => newEpisode.push(episode.find((value: Data) => value.idTrack === id)));
   return newEpisode;
 };
