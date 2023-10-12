@@ -11,39 +11,39 @@ type ContextProviderProps = {
   children: React.ReactNode;
 };
 
+interface Props {
+  detail: Data[];
+  episodes: Data[];
+}
+
 interface contextUse {
   podcast: List[];
   setPodcast: React.Dispatch<React.SetStateAction<List[]>>;
-  detail: Data[];
-  episodes: Data[];
-  setEpisodes: React.Dispatch<React.SetStateAction<Data[]>>;
-  setDetail: React.Dispatch<React.SetStateAction<Data[]>>;
+  detail: any;
+  setDetail: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export const UseContextGeneral = createContext({} as contextUse);
 
 export const GeneralContextProvider = ({ children }: ContextProviderProps) => {
-  const [podcast, setPodcast] = useState<List[]>(ls.get("podcast", []));
-  const [episodes, setEpisodes] = useState<Data[]>(ls.get("episodes", []));
-  const [detail, setDetail] = useState<Data[]>(ls.get("detail", []));
+  const [podcast, setPodcast] = useState<List[]>(ls.get("podcast", []).value);
+  const [detail, setDetail] = useState<any>(ls.get("detail", []).value);
   const { setIsLoader } = useContext(UseContextLoader);
-  const { timeStamp, setTimesTamp, isTime, setIsTime } =
+  const { timeStampList, setTimesTampList, isTime, setIsTime } =
     useContext(UseContextTime);
 
   useEffect(() => {
     setIsLoader(true);
     listRepository().then((data: List[]) => {
-      setPodcast(data);
-      setTimesTamp(hoursUtil());
-      setIsTime(datefinally(timeStamp));
-      setIsLoader(false);
+      if (data || isTime) {
+        ls.set("podcast", { value: data, time: hoursUtil() });
+        setPodcast(data);
+        setTimesTampList(hoursUtil());
+        setIsTime(datefinally(timeStampList));
+        setIsLoader(false);
+      }
     });
   }, []);
-
-  useEffect(() => {
-    ls.set("podcast", podcast);
-    ls.set("timestamp-podcast", timeStamp);
-  }, [isTime]);
 
   return (
     <UseContextGeneral.Provider
@@ -51,9 +51,7 @@ export const GeneralContextProvider = ({ children }: ContextProviderProps) => {
         podcast,
         setPodcast,
         detail,
-        setDetail,
-        episodes,
-        setEpisodes,
+        setDetail
       }}
     >
       {children}

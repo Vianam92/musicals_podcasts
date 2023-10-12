@@ -3,12 +3,12 @@ import { Data, Detail } from "../model/detail.vm";
 import '../card.css';
 import { ListImage, Image , Title, TitleSpan, TitleBy, ListDescription, DescriptionSpan} from "./card.styled";
 
-const CardComponent = ({ detail}: Detail) => {
+const CardComponent = ({ detail}: any) => {
   return (
     <article className="card-article">
-      {detail ? detail.map((pod: Data) => {
+      {detail ? detail.detail.map((pod: Data) => {
         return (
-          <ul key={pod.id}>
+          <ul key={pod.idTrack}>
             <ListImage className="list-img">
               <Image src={pod.artwork} alt={pod.trackName} />
             </ListImage>

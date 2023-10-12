@@ -6,8 +6,10 @@ type ContextProviderProps = {
 };
 
 interface contextUse {
-  timeStamp: number;
-  setTimesTamp: React.Dispatch<React.SetStateAction<number>>;
+  timeStampList: number;
+  setTimesTampList: React.Dispatch<React.SetStateAction<number>>;
+  timeStampDetail: number;
+  setTimesTampDetail: React.Dispatch<React.SetStateAction<number>>;
   isTime: boolean;
   setIsTime: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -15,16 +17,21 @@ interface contextUse {
 export const UseContextTime = createContext({} as contextUse);
 
 export const TimeContextProvider = ({ children }: ContextProviderProps) => {
-  const [timeStamp, setTimesTamp] = useState<number>(
-    ls.get("timestamp-list", 0)
+  const [timeStampList, setTimesTampList] = useState<number>(
+    ls.get("podcast", 0).time
+  );
+  const [timeStampDetail, setTimesTampDetail] = useState<number>(
+    ls.get("detail", 0).time
   );
   const [isTime, setIsTime] = useState<boolean>(false);
     
   return (
     <UseContextTime.Provider
       value={{
-        timeStamp,
-        setTimesTamp,
+        timeStampList,
+        setTimesTampList,
+        timeStampDetail,
+        setTimesTampDetail,
         isTime,
         setIsTime,
       }}

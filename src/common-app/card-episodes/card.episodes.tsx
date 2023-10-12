@@ -1,5 +1,10 @@
 import PropTypes from "prop-types";
-import { CardEpisode, Data, EpisodesAudio, IdRequest } from "../../common/model/detail.vm";
+import {
+  CardEpisode,
+  Data,
+  EpisodesAudio,
+  IdRequest,
+} from "../../common/model/detail.vm";
 import { ThCard, TrCard, TdCard, TdLast } from "./card.episodes.styled";
 import { Link } from "react-router-dom";
 import "../../common/card.css";
@@ -12,36 +17,49 @@ interface Props {
 }
 
 const CardEpisodesComponent = ({ episode, podcastId }: Props) => {
-  
   return (
     <CardsEpisodes className="article-episodes">
-      <h2>
-        Episodes: <small>{episode?.length}</small>
-      </h2>
-      <table>
-        <thead>
-          <tr>
-            <ThCard>Title</ThCard>
-            <ThCard>Date</ThCard>
-            <ThCard>Duration</ThCard>
-          </tr>
-        </thead>
-        <tbody>
-          {episode?.map((value: CardEpisode) => {
-            return (
-              <TrCard key={`${value.idTrack}`}>
-                <TdCard>
-                  <Link to={`/podcast/${podcastId}/episode/${value.idTrack}`}>
-                    {value.trackName}
-                  </Link>
-                </TdCard>
-                <TdCard>{convertDateFormat(value.date.slice(0, 10))}</TdCard>
-                <TdLast>{value.date.slice(11).slice(0, 5)}</TdLast>
-              </TrCard>
-            );
-          })}
-        </tbody>
-      </table>
+      {episode ? (
+        <>
+          <h2>
+            Episodes: <small>{episode ? episode?.length : ""}</small>
+          </h2>
+          <table>
+            <thead>
+              <tr>
+                <ThCard>Title</ThCard>
+                <ThCard>Date</ThCard>
+                <ThCard>Duration</ThCard>
+              </tr>
+            </thead>
+            <tbody>
+              {episode ? (
+                episode?.map((value: CardEpisode) => {
+                  return (
+                    <TrCard key={`${value.idTrack}`}>
+                      <TdCard>
+                        <Link
+                          to={`/podcast/${podcastId}/episode/${value.idTrack}`}
+                        >
+                          {value.trackName}
+                        </Link>
+                      </TdCard>
+                      <TdCard>
+                        {convertDateFormat(value.date.slice(0, 10))}
+                      </TdCard>
+                      <TdLast>{value.date.slice(11).slice(0, 5)}</TdLast>
+                    </TrCard>
+                  );
+                })
+              ) : (
+                <p>Not episodes</p>
+              )}
+            </tbody>
+          </table>
+        </>
+      ) : (
+        ""
+      )}
     </CardsEpisodes>
   );
 };

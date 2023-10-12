@@ -21,13 +21,11 @@ describe("Detail Component", () => {
         idTrack: 25458,
       },
     ];
-    const episodes: Data[] = [];
 
     render(
       <Router>
         <DetailComponent
           detail={detail}
-          episodes={episodes}
           podcastId={podcastId}
         />
       </Router>

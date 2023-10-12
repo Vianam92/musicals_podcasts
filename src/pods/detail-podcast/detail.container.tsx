@@ -10,31 +10,27 @@ import { UseContextTime } from "../../core/useContext/useTime";
 import ls from "../../common/local-storage.ts/localStorage";
 
 const PodcastContainer = ({ podcastId }: IdRequest) => {
-  const { podcast, detail, setDetail, episodes, setEpisodes } =
+  const { podcast, detail, setDetail } =
     useContext(UseContextGeneral);
-  const { timeStamp, setTimesTamp, isTime, setIsTime } =
-    useContext(UseContextTime);
+    const { timeStampDetail,
+      setTimesTampDetail, isTime, setIsTime } =
+      useContext(UseContextTime);
 
-    useEffect(() => {
-      detailRepository({ podcastId }).then((pod: any) => {
-        setDetail(newDataFilter(podcast, pod).summary);
-        setEpisodes(newDataFilter(podcast, pod).episodes);
-        setTimesTamp(hoursUtil());
-        setIsTime(datefinally(timeStamp));
-      });
-    }, [podcastId]);
-
-    useEffect(() => {
-      ls.set("detail", detail);
-      ls.set("timestamp-detail", timeStamp);
-      ls.set("episodes", episodes);
-    }, [isTime]);
+  useEffect(() => {
+    detailRepository({ podcastId }).then((pod: any) => {
+      if (pod || isTime) {
+        setDetail({detail: newDataFilter(podcast, pod).summary, episodes: newDataFilter(podcast, pod).episodes});
+        ls.set("detail", { value: {detail: newDataFilter(podcast, pod).summary, episodes: newDataFilter(podcast, pod).episodes}, time: hoursUtil() });
+        setTimesTampDetail(hoursUtil());
+        setIsTime(datefinally(timeStampDetail));
+      }
+    });
+  }, [podcastId]);
 
   return (
     <DetailComponent
       podcastId={podcastId}
       detail={detail}
-      episodes={episodes}
     />
   );
 };

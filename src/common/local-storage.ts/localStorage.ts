@@ -1,6 +1,14 @@
 import { List } from "../model/list.vm";
 import { Data } from '../model/detail.vm';
 
+//TODO arreglar type
+
+interface Props {
+  value: List[] | Data[];
+  time: number;
+  episodes?: Data[]
+}
+
 const get = (key: string, defaultData: List[] | Data[] | number) => {
   const data = localStorage.getItem(key);
   if (data === null) {
@@ -10,7 +18,7 @@ const get = (key: string, defaultData: List[] | Data[] | number) => {
   }
 };
 
-const set = (key: string, value: List[] | Data[] | number) => {
+const set = (key: string, value: any) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
 
