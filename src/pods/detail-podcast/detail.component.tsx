@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import CardComponent from "../../common/card/card";
 import CardEpisodesComponent from "../../common-app/card-episodes/card.episodes";
 import { DetailModel } from "../../common/model/detail.vm";
-import SectionEpisodesLayout from "../../common/layout/episodes.layout";
+import SectionEpisodesLayout from "../../layout/episodes.layout";
 
 interface Props{
   detail:DetailModel;

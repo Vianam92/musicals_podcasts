@@ -1,7 +1,7 @@
 import FilterPodcast from "../pods/filter/filter.podcast";
 import ListContainer from "../pods/list/list.container";
 import { useState, useContext } from "react";
-import SectionLayout from "../common/layout/center.layout";
+import SectionLayout from "../layout/center.layout";
 import UseContextGeneral from "../core/useContext/useContext";
 
 const Home = () => {

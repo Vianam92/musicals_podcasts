@@ -1,5 +1,5 @@
 import React from "react";
-import { LayoutFlex } from "../styled/styled.component";
+import { LayoutFlex } from "../common/styled/styled.component";
 interface Props {
   children: React.ReactNode;
 }

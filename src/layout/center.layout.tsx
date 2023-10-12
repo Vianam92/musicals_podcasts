@@ -1,5 +1,5 @@
 import React from "react";
-import { LayoutGrid } from "../styled/styled.component";
+import { LayoutGrid } from "../common/styled/styled.component";
 interface Props {
   children: React.ReactNode;
 }

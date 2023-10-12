@@ -2,7 +2,7 @@ import CardComponent from "../../common/card/card";
 import PropTypes from "prop-types";
 import AudioComponent from "../../common-app/audio-episodes/audio.component";
 import {  DetailModel, Episodes } from "../../common/model/detail.vm";
-import SectionEpisodesLayout from "../../common/layout/episodes.layout";
+import SectionEpisodesLayout from "../../layout/episodes.layout";
 import { findEpisode } from "../../common/helpers/filter.helper";
 
 interface Props {
