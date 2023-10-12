@@ -1,4 +1,4 @@
-import { Data, Detail, IdRequest } from "../model/detail.vm";
+import { Detail, Episodes, IdEpisodeRequest } from "../model/detail.vm";
 import { List } from "../model/list.vm";
 
 export const filterPodcast = (podcast: List[], podcastSearch: string) => {
@@ -17,26 +17,26 @@ export const filterPodcast = (podcast: List[], podcastSearch: string) => {
     return newPodcast;
   };
   
-  const newIdsPods = (detail: Data[]) => {
+  const newIdsPods = (detail: Detail[]) => {
     let ids = new Set();
     detail.filter((item: Detail) => ids.add(item.id));
     let newIds = Array.from(ids);
     return newIds;
   };
   
-  const addSummary = (detail: Data[], podcast: List[]) => {
+  const addSummary = (detail: Detail[], podcast: List[]) => {
     let addSummary: any = [];
     let newDetail: any = [];
-    newIdsPods(detail).map((id: any) => newDetail.push(detail.find((item:any) => item.id === id)))
+    newIdsPods(detail).map((id: any) => newDetail.push(detail.find((item:Detail) => item.id === id)))
     findPods(newIdsPods(detail), podcast).filter((item: any) =>
-    newDetail.filter((data: any) =>
+    newDetail.filter((data: Detail) =>
         addSummary.push({ ...data, summary: item.summary })
       )
     );
     return addSummary;
   };
   
-  const getEpisodes = (detail: Data[]) => {
+  const getEpisodes = (detail: Detail[]) => {
     let newEpisodes: any = [];
     newIdsPods(detail).map((id: any) =>
       newEpisodes.push(detail.filter((item: any) => item.idTrack !== id))
@@ -44,16 +44,16 @@ export const filterPodcast = (podcast: List[], podcastSearch: string) => {
     return newEpisodes;
   };
   
-  export const newDataFilter = (podcast: List[], detail: Data[]) => {
+  export const newDataFilter = (podcast: List[], detail: any) => {
     const summary = addSummary(detail, podcast);
     const episodes = getEpisodes(detail);
   
     return { summary, episodes };
   };
 
-export const findEpisode = (episodes: Data[], {episodeId}: IdRequest) => {
-  let newEpisode: Data[] = [];
+export const findEpisode = (episodes: Episodes[], {episodeId}: IdEpisodeRequest) => {
+  let newEpisode: Episodes[] = [];
   const id = Number(episodeId);
-  episodes.map((episode: any) => newEpisode.push(episode.find((value: Data) => value.idTrack === id)));
+  episodes.map((episode: any) => newEpisode.push(episode.find((value: Episodes) => value.idTrack === id)));
   return newEpisode;
 };

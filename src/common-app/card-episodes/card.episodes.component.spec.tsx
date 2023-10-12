@@ -2,14 +2,20 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import CardEpisodesComponent from "./card.episodes";
 import { BrowserRouter as Router } from "react-router-dom";
-import { CardEpisode } from "../../common/model/detail.vm";
+import { Episodes } from "../../common/model/detail.vm";
 
 describe("Card Episodes Component", () => {
   it("should  render", () => {
-    const episode: CardEpisode[] = [{
-      idTrack: '0',
-      trackName: "The Joe Music",
-      date: "2/5/2023 04:00"
+    const episode: Episodes[] = [{
+      id: '0',
+      artwork: "",
+      artist: "The Joe",
+      trackName: "The Joe",
+      summary: "Lorem ipsun",
+      idTrack: 215,
+      url: "",
+      date: "",
+      description: ""
     }];
 
     const podcastId: any = 1254;

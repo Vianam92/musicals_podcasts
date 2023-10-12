@@ -1,15 +1,7 @@
+import { DetailData } from "../model/detail.vm";
 import { List } from "../model/list.vm";
-import { Data } from '../model/detail.vm';
 
-//TODO arreglar type
-
-interface Props {
-  value: List[] | Data[];
-  time: number;
-  episodes?: Data[]
-}
-
-const get = (key: string, defaultData: List[] | Data[] | number) => {
+const get = (key: string, defaultData: List[] | DetailData[] | number) => {
   const data = localStorage.getItem(key);
   if (data === null) {
     return defaultData;

@@ -21,4 +21,5 @@ export const TdCard = styled.td`
 
 export const TdLast = styled.td`
 text-align: right;
+border-bottom: 2px solid rgba(128, 128, 128, 0.217);
 `

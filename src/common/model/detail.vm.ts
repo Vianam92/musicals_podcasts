@@ -11,42 +11,46 @@ export interface DetailData {
     description: string;
 }
 
-export interface Data {
-    id?: string | number;
+export interface DetailModel{
+    detail: Detail[];
+    episodes: Episodes[];
+}
+
+export interface Detail{
+    id: string | number;
     artwork: string;
+    artist: string;
     trackName: string;
-    artist?: string;
-    collection?: string;
-    summary?: string;
+    summary: string;
+    idTrack: string | number;
+    url?: string | undefined;
     date: string;
-    url?: string;
+    description: string | undefined;
+}
+
+export interface Episodes{
+    id: string | number;
+    artwork: string;
+    artist?: string | undefined;
+    trackName: string;
+    summary: string;
     description: string;
     idTrack: string | number;
-}
-
-export interface CardEpisode {
-    trackName: string;
+    url?: string;
     date: string;
-    idTrack?: string | number;
 }
-
 export interface EpisodesAudio {
     trackName: string;
     url: string | undefined;
     description: string;
     idTrack?: string | number;
 }
-
 export interface IdRequest{
-    podcastId?: string | undefined;
-    episodeId?: string | undefined;
+    podcastId: string | undefined ;
 }
 
-export interface Detail{
-    id?: string | number;
-    detail?: Data[];
-    episodes?: Data[];
-    episode?: Data[];
+export interface IdEpisodeRequest{
+    episodeId: string | undefined;
 }
 
 export interface DetailResult{

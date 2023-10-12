@@ -17,15 +17,17 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
       useContext(UseContextTime);
 
   useEffect(() => {
-    detailRepository({ podcastId }).then((pod: any) => {
-      if (pod || isTime) {
-        setDetail({detail: newDataFilter(podcast, pod).summary, episodes: newDataFilter(podcast, pod).episodes});
-        ls.set("detail", { value: {detail: newDataFilter(podcast, pod).summary, episodes: newDataFilter(podcast, pod).episodes}, time: hoursUtil() });
+    async function startFetching() {
+      const response = await detailRepository({podcastId});
+      if(response || isTime){
+        setDetail({detail: newDataFilter(podcast, response).summary, episodes: newDataFilter(podcast, response).episodes});
+        ls.set("detail", { value: {detail: newDataFilter(podcast, response).summary, episodes: newDataFilter(podcast, response).episodes}, time: hoursUtil() });
         setTimesTampDetail(hoursUtil());
         setIsTime(datefinally(timeStampDetail));
       }
-    });
-  }, [podcastId]);
+    }
+    startFetching();
+  }, [podcastId, isTime]);
 
   return (
     <DetailComponent

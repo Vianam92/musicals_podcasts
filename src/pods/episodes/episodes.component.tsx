@@ -1,21 +1,21 @@
 import CardComponent from "../../common/card/card";
 import PropTypes from "prop-types";
 import AudioComponent from "../../common-app/audio-episodes/audio.component";
-import { Data, IdRequest } from "../../common/model/detail.vm";
+import {  DetailModel, Episodes } from "../../common/model/detail.vm";
 import SectionEpisodesLayout from "../../common/layout/episodes.layout";
 import { findEpisode } from "../../common/helpers/filter.helper";
 
-interface Prop {
-  detail: any;
-  episodeId: any;
+interface Props {
+  detail: DetailModel;
+  episodeId: any ;
 }
 
-const EpisodesComponent = ({ detail, episodeId }: Prop) => {
+const EpisodesComponent = ({ detail, episodeId }: Props) => {
   return (
     <>
       <SectionEpisodesLayout>
         <CardComponent detail={detail}></CardComponent>
-        {detail.episodes ?  findEpisode(detail.episodes, {episodeId}).map((episode: Data) => (
+        {detail.episodes ?  findEpisode(detail.episodes, {episodeId}).map((episode: Episodes) => (
           <AudioComponent
             key={episode.idTrack}
             description={episode.description}
@@ -29,8 +29,8 @@ const EpisodesComponent = ({ detail, episodeId }: Prop) => {
 };
 
 EpisodesComponent.propTypes = {
-  detail: PropTypes.array,
-  episodes: PropTypes.array,
+  detail: PropTypes.object,
+  episodeId: PropTypes.string,
 };
 
 export default EpisodesComponent;

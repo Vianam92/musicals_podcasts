@@ -1,12 +1,16 @@
 import PropTypes from "prop-types";
-import { Data, Detail } from "../model/detail.vm";
+import { Detail, DetailModel } from "../model/detail.vm";
 import '../card.css';
 import { ListImage, Image , Title, TitleSpan, TitleBy, ListDescription, DescriptionSpan} from "./card.styled";
 
-const CardComponent = ({ detail}: any) => {
+interface Props{
+  detail: DetailModel;
+}
+const CardComponent = ({ detail}: Props) => {
+
   return (
     <article className="card-article">
-      {detail ? detail.detail.map((pod: Data) => {
+      {detail ? detail.detail.map((pod: Detail) => {
         return (
           <ul key={pod.idTrack}>
             <ListImage className="list-img">
@@ -22,7 +26,7 @@ const CardComponent = ({ detail}: any) => {
 };
 
 CardComponent.propTypes = {
-  detail: PropTypes.array,
+  detail: PropTypes.object,
 };
 
 export default CardComponent;
