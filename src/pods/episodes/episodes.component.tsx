@@ -11,6 +11,8 @@ interface Props {
 }
 
 const EpisodesComponent = ({ detail, episodeId }: Props) => {
+  console.log(detail.episodes);
+  console.log(findEpisode(detail.episodes, {episodeId}))
   return (
     <>
       <SectionEpisodesLayout>

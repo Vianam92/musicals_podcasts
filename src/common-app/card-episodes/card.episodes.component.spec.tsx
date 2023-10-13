@@ -10,7 +10,7 @@ describe("Card Episodes Component", () => {
       id: '0',
       artwork: "",
       artist: "The Joe",
-      trackName: "The Joe",
+      trackName: "Song",
       summary: "Lorem ipsun",
       idTrack: 215,
       url: "",
@@ -18,7 +18,7 @@ describe("Card Episodes Component", () => {
       description: ""
     }];
 
-    const podcastId: any = 1254;
+    const podcastId: any = '1254';
 
     render(
       <Router>
@@ -28,6 +28,7 @@ describe("Card Episodes Component", () => {
         />
       </Router>
     );
-    expect(screen.getByText('The Joe Music')).toBeInTheDocument();
+    expect(screen.getByText('Title')).toBeInTheDocument();
+    expect(screen.getByText('Song')).toBeInTheDocument();
   });
 });

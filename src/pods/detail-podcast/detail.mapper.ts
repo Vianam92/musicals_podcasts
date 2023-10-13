@@ -4,11 +4,11 @@ const mapPodcastFromApi = (podcast: DetailData) => ({
   id: podcast.collectionId,
   idTrack: podcast.trackId,
   artwork: podcast.artworkUrl600,
-  artist: podcast.artistName,
+  artist: podcast.artistName ? podcast.artistName : "",
   trackName: podcast.trackName,
   date: podcast.releaseDate,
   url: podcast.previewUrl,
-  description: podcast.description
+  description: podcast.description ? podcast.description: ""
 });
 
 const mapPodcastCollectionFromApi = (podcastCollection: DetailResult) =>

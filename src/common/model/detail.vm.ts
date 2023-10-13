@@ -25,7 +25,7 @@ export interface Detail{
     idTrack: string | number;
     url?: string | undefined;
     date: string;
-    description: string | undefined;
+    description: string;
 }
 
 export interface Episodes{

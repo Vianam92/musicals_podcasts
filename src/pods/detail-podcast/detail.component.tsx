@@ -16,7 +16,7 @@ const DetailComponent = ({ detail, podcastId }: Props) => {
         <CardComponent detail={detail} />
         {detail ? detail.episodes.map((episode: any, index: number) => {
           return <CardEpisodesComponent key={index} episode={episode} podcastId={podcastId}/>;
-        }): <p>No existe</p>}
+        }): <p>No episodes</p>}
       </SectionEpisodesLayout>
     </>
   );

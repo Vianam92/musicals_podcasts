@@ -17,7 +17,7 @@ const CardEpisodesComponent = ({ episode, podcastId }: Props) => {
       {episode ? (
         <>
           <h2>
-            Episodes: <small>{episode ? episode?.length : ""}</small>
+            Episodes: <small>{episode?.length}</small>
           </h2>
           <table>
             <thead>
@@ -28,7 +28,7 @@ const CardEpisodesComponent = ({ episode, podcastId }: Props) => {
               </tr>
             </thead>
             <tbody>
-              {episode ? (
+              {(
                 episode?.map((value: Episodes) => {
                   return (
                     <TrCard key={`${value.idTrack}`}>
@@ -46,8 +46,6 @@ const CardEpisodesComponent = ({ episode, podcastId }: Props) => {
                     </TrCard>
                   );
                 })
-              ) : (
-                <p>Not episodes</p>
               )}
             </tbody>
           </table>

@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react';
 import FilterPodcast from './filter.podcast';
 import { BrowserRouter as Router } from "react-router-dom";
 import { List } from '../../common/model/list.vm';
-import { filterPodcast } from '../../common/helpers/filter.helper';
 
 describe('Filter component specs', () => {
     const search = "the joe";
