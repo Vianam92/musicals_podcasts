@@ -1,3 +1,7 @@
+export interface DetailResult{
+    results: DetailData[]
+}
+
 export interface DetailData {
     artistId?: string | number;
     collectionId?: string | number;
@@ -23,7 +27,7 @@ export interface Detail{
     trackName: string;
     summary: string;
     idTrack: string | number;
-    url?: string | undefined;
+    url?: string;
     date: string;
     description: string;
 }
@@ -31,7 +35,7 @@ export interface Detail{
 export interface Episodes{
     id: string | number;
     artwork: string;
-    artist?: string | undefined;
+    artist?: string;
     trackName: string;
     summary: string;
     description: string;
@@ -51,8 +55,4 @@ export interface IdRequest{
 
 export interface IdEpisodeRequest{
     episodeId: string | undefined;
-}
-
-export interface DetailResult{
-    results: DetailData[]
 }

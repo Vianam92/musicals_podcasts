@@ -4,8 +4,8 @@ import CardEpisodesComponent from "../../common-app/card-episodes/card.episodes"
 import { DetailModel } from "../../common/model/detail.vm";
 import SectionEpisodesLayout from "../../layout/episodes.layout";
 
-interface Props{
-  detail:DetailModel;
+interface Props {
+  detail: DetailModel;
   podcastId: any;
 }
 
@@ -14,9 +14,10 @@ const DetailComponent = ({ detail, podcastId }: Props) => {
     <>
       <SectionEpisodesLayout>
         <CardComponent detail={detail} />
-        {detail ? detail.episodes.map((episode: any, index: number) => {
-          return <CardEpisodesComponent key={index} episode={episode} podcastId={podcastId}/>;
-        }): <p>No episodes</p>}
+        <CardEpisodesComponent
+          episode={detail.episodes}
+          podcastId={podcastId}
+        />
       </SectionEpisodesLayout>
     </>
   );

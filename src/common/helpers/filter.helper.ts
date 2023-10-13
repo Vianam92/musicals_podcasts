@@ -41,7 +41,7 @@ export const filterPodcast = (podcast: List[], podcastSearch: string) => {
     newIdsPods(detail).map((id: any) =>
       newEpisodes.push(detail.filter((item: any) => item.idTrack !== id))
     );
-    return newEpisodes;
+    return newEpisodes.flat();
   };
   
   export const newDataFilter = (podcast: List[], detail: any) => {
@@ -54,6 +54,7 @@ export const filterPodcast = (podcast: List[], podcastSearch: string) => {
 export const findEpisode = (episodes: Episodes[], {episodeId}: IdEpisodeRequest) => {
   let newEpisode: Episodes[] = [];
   const id = Number(episodeId);
-  episodes.map((episode: any) => newEpisode.push(episode.find((value: Episodes) => value.idTrack === id)));
+  const findId: any = episodes.find((value: Episodes) => value.idTrack === id)
+  newEpisode.push(findId);
   return newEpisode;
 };

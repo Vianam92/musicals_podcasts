@@ -11,13 +11,11 @@ interface Props {
 }
 
 const EpisodesComponent = ({ detail, episodeId }: Props) => {
-  console.log(detail.episodes);
-  console.log(findEpisode(detail.episodes, {episodeId}))
   return (
     <>
       <SectionEpisodesLayout>
         <CardComponent detail={detail}></CardComponent>
-        {detail.episodes ?  findEpisode(detail.episodes, {episodeId}).map((episode: Episodes) => (
+        {Array.isArray(detail.episodes) ?  findEpisode(detail.episodes, {episodeId}).map((episode: Episodes) => (
           <AudioComponent
             key={episode.idTrack}
             description={episode.description}

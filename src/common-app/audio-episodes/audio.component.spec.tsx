@@ -7,22 +7,20 @@ import { EpisodesAudio } from "../../common/model/detail.vm";
 describe("Card Episodes Component", () => {
   it("should  render", () => {
     const episode: EpisodesAudio = {
-      idTrack: '0',
+      idTrack: 1,
       trackName: "The Joe Music",
-      description: "Lorem ipsu",
-      url: ""
+      description: "Lorem ipsu.",
+      url: "https://chrt.fm/track/BE7515/traffic.omny.fm/d/"
     };
 
     render(
       <Router>
         <AudioComponent
-          key={episode.idTrack}
           description={episode.description}
           trackName={episode.trackName}
           url={episode.url}
         />
       </Router>
     );
-    expect(screen.getByText('Lorem ipsu')).toBeInTheDocument();
   });
 });

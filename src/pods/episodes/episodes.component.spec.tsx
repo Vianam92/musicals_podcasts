@@ -1,12 +1,12 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import EpisodesComponent from "./episodes.component";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Episodes } from "../../common/model/detail.vm";
+import { DetailModel } from "../../common/model/detail.vm";
 
 describe("Episodes Component", () => {
   it("should render", () => {
-    const detail: any = {
+    const detail: DetailModel = {
       detail: [
         {
           id: "0",
@@ -20,7 +20,7 @@ describe("Episodes Component", () => {
           description: "Lorem ipsun mgro",
         },
       ],
-      episodes: [
+      episodes: 
         [
           {
             id: 1535809341,
@@ -34,7 +34,6 @@ describe("Episodes Component", () => {
             description:
               "With the arrival of Drake’s ‘For All The Dogs,’ the JBP dives into the timestamp record ‘8am in Charlotte’",
           },
-        ],
       ],
     };
     const episodeId = '1000629725791';
