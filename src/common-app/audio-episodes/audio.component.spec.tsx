@@ -22,5 +22,6 @@ describe("Card Episodes Component", () => {
         />
       </Router>
     );
+    expect(screen.getByRole('heading')).toHaveTextContent('The Joe Music')
   });
 });

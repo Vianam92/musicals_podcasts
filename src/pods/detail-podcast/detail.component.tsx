@@ -11,15 +11,19 @@ interface Props {
 
 const DetailComponent = ({ detail, podcastId }: Props) => {
   return (
-    <>
-      <SectionEpisodesLayout>
-        <CardComponent detail={detail} />
-        <CardEpisodesComponent
-          episode={detail.episodes}
-          podcastId={podcastId}
-        />
-      </SectionEpisodesLayout>
-    </>
+    <SectionEpisodesLayout>
+      {detail ? (
+        <>
+          <CardComponent detail={detail} />
+          <CardEpisodesComponent
+            episode={detail.episodes}
+            podcastId={podcastId}
+          />
+        </>
+      ) : (
+        <p>No podcasts</p>
+      )}
+    </SectionEpisodesLayout>
   );
 };
 
