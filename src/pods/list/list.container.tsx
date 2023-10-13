@@ -11,16 +11,16 @@ import UseContextTime from "../../core/useContext/useTime";
 import ls from "../../common/local-storage.ts/localStorage";
 
 const ListContainer = ({ podcastSearch }: Search) => {
-  const {
-    podcast, setPodcast
-  } = useContext(UseContextGeneral);
-  const {setIsLoader} = useContext(UseContextLoader);
-  const {isTime, setIsTime,timeStampList, setTimesTampList} = useContext(UseContextTime);
+  const { podcast, setPodcast } = useContext(UseContextGeneral);
+  const { setIsLoader } = useContext(UseContextLoader);
+  const { isTime, setIsTime, timeStampList, setTimesTampList } =
+    useContext(UseContextTime);
 
   useEffect(() => {
     setIsLoader(true);
     async function startFetching() {
-       const response = await listRepository();
+      try {
+        const response = await listRepository();
         if (response || isTime) {
           setTimesTampList(hoursUtil());
           ls.set("podcast", { value: response, time: hoursUtil() });
@@ -28,6 +28,9 @@ const ListContainer = ({ podcastSearch }: Search) => {
           setIsTime(datefinally(timeStampList));
           setIsLoader(false);
         }
+      } catch (error) {
+        console.error(error);
+      }
     }
     startFetching();
   }, [isTime]);

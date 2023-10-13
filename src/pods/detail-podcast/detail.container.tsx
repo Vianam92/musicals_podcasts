@@ -10,31 +10,37 @@ import { UseContextTime } from "../../core/useContext/useTime";
 import ls from "../../common/local-storage.ts/localStorage";
 
 const PodcastContainer = ({ podcastId }: IdRequest) => {
-  const { podcast, detail, setDetail } =
-    useContext(UseContextGeneral);
-    const { timeStampDetail,
-      setTimesTampDetail, isTime, setIsTime } =
-      useContext(UseContextTime);
+  const { podcast, detail, setDetail } = useContext(UseContextGeneral);
+  const { timeStampDetail, setTimesTampDetail, isTime, setIsTime } =
+    useContext(UseContextTime);
 
   useEffect(() => {
     async function startFetching() {
-      const response = await detailRepository({podcastId});
-      if(response || isTime){
-        setDetail({detail: newDataFilter(podcast, response).summary, episodes: newDataFilter(podcast, response).episodes});
-        ls.set("detail", { value: {detail: newDataFilter(podcast, response).summary, episodes: newDataFilter(podcast, response).episodes}, time: hoursUtil() });
-        setTimesTampDetail(hoursUtil());
-        setIsTime(datefinally(timeStampDetail));
+      try {
+        const response = await detailRepository({ podcastId });
+        if (response || isTime) {
+          setDetail({
+            detail: newDataFilter(podcast, response).summary,
+            episodes: newDataFilter(podcast, response).episodes,
+          });
+          ls.set("detail", {
+            value: {
+              detail: newDataFilter(podcast, response).summary,
+              episodes: newDataFilter(podcast, response).episodes,
+            },
+            time: hoursUtil(),
+          });
+          setTimesTampDetail(hoursUtil());
+          setIsTime(datefinally(timeStampDetail));
+        }
+      } catch (error) {
+        console.error(error);
       }
     }
     startFetching();
   }, [podcastId, isTime]);
 
-  return (
-    <DetailComponent
-      podcastId={podcastId}
-      detail={detail}
-    />
-  );
+  return <DetailComponent podcastId={podcastId} detail={detail} />;
 };
 
 PodcastContainer.propTypes = {

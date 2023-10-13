@@ -11,7 +11,7 @@ const mapPodcastFromApi = (podcast: DetailData) => ({
   description: podcast.description ? podcast.description: ""
 });
 
-const mapPodcastCollectionFromApi = (podcastCollection: DetailResult) =>
+const mapPodcastCollectionFromApi = (podcastCollection: DetailResult) => 
   podcastCollection.results.map((collection: DetailData) =>
     mapPodcastFromApi(collection)
   );
