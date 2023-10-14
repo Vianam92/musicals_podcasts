@@ -17,15 +17,18 @@ const ListContainer = ({ podcastSearch }: Search) => {
     useContext(UseContextTime);
 
   useEffect(() => {
+    setTimesTampList(hoursUtil());
+    setIsTime(datefinally(timeStampList));
+  }, [])
+
+  useEffect(() => {
     setIsLoader(true);
     async function startFetching() {
       try {
         const response = await listRepository();
         if (response || isTime) {
-          setTimesTampList(hoursUtil());
-          ls.set("podcast", { value: response, time: hoursUtil() });
+          ls.set("podcast", { value: response, time: timeStampList });
           setPodcast(response);
-          setIsTime(datefinally(timeStampList));
           setIsLoader(false);
         }
       } catch (error) {
@@ -34,8 +37,6 @@ const ListContainer = ({ podcastSearch }: Search) => {
     }
     startFetching();
   }, [isTime]);
-
-  console.log("list",isTime)
 
   return (
     <>

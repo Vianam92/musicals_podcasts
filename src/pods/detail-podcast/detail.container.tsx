@@ -15,6 +15,11 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
     useContext(UseContextTime);
 
   useEffect(() => {
+    setTimesTampDetail(hoursUtil());
+    setIsTime(datefinally(timeStampDetail));
+  }, []);
+
+  useEffect(() => {
     async function startFetching() {
       try {
         const response = await detailRepository({ podcastId });
@@ -28,10 +33,8 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
               detail: newDataFilter(podcast, response).summary,
               episodes: newDataFilter(podcast, response).episodes,
             },
-            time: hoursUtil(),
+            time: timeStampDetail,
           });
-          setTimesTampDetail(hoursUtil());
-          setIsTime(datefinally(timeStampDetail));
         }
       } catch (error) {
         console.error(error);
@@ -39,8 +42,6 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
     }
     startFetching();
   }, [podcastId, isTime]);
-
-  console.log("detail",isTime)
 
   return <DetailComponent podcastId={podcastId} detail={detail} />;
 };
