@@ -40,6 +40,8 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
     startFetching();
   }, [podcastId, isTime]);
 
+  console.log("detail",isTime)
+
   return <DetailComponent podcastId={podcastId} detail={detail} />;
 };
 

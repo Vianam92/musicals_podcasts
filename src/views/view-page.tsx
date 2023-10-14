@@ -8,7 +8,7 @@ const Home = () => {
   const [podcastSearch, setPodcastSearch] = useState<string>("");
   const { podcast } = useContext(UseContextGeneral);
 
-  const handlerInput = (value: string) => {
+  const handlerInput = (value: any) => {
     setPodcastSearch(value);
   };
   return (

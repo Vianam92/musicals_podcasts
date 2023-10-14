@@ -16,16 +16,12 @@ describe("Detail Component", () => {
         trackName: "The Joe",
         summary: "Lorem ipsun",
         idTrack: 215,
-        url: "",
         date: "",
-        description: ""
       }],
       episodes: [{
         id: '0',
         artwork: "",
-        artist: "The Joe",
         trackName: "The Joe",
-        summary: "Lorem ipsun",
         idTrack: 215,
         url: "",
         date: "",

@@ -6,7 +6,7 @@ import { List } from '../../common/model/list.vm';
 import { filterPodcast } from '../../common/helpers/filter.helper';
 interface Props {
     podcastSearch: string;
-    handlerInput: React.Dispatch<React.SetStateAction<any>>;
+    handlerInput: React.Dispatch<React.SetStateAction<string>>;
     podcast: List[];
 }
 

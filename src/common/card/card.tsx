@@ -7,7 +7,6 @@ interface Props{
   detail: DetailModel;
 }
 const CardComponent = ({ detail}: Props) => {
-
   return (
     <article className="card-article">
       {detail ? detail.detail.map((pod: Detail) => {

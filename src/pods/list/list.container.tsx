@@ -35,6 +35,8 @@ const ListContainer = ({ podcastSearch }: Search) => {
     startFetching();
   }, [isTime]);
 
+  console.log("list",isTime)
+
   return (
     <>
       {filterPodcast(podcast, podcastSearch).map((pod: List) => (

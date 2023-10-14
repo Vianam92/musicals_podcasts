@@ -9,9 +9,7 @@ describe("Card Episodes Component", () => {
     const episode: Episodes[] = [{
       id: '0',
       artwork: "",
-      artist: "The Joe",
       trackName: "Song",
-      summary: "Lorem ipsun",
       idTrack: 215,
       url: "",
       date: "",

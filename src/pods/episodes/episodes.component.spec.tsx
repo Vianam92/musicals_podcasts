@@ -15,28 +15,23 @@ describe("Episodes Component", () => {
           trackName: "The Joe",
           summary: "Lorem ipsun",
           idTrack: "215",
-          url: "",
           date: "",
-          description: "Lorem ipsun mgro",
         },
       ],
-      episodes: 
-        [
-          {
-            id: 1535809341,
-            artwork: "",
-            artist: "",
-            trackName: "The Joe",
-            summary: "Lorem ipsun",
-            idTrack: 1000629725791,
-            url: "",
-            date: "2023-09-30T07:00:00Z",
-            description:
-              "With the arrival of Drake’s ‘For All The Dogs,’ the JBP dives into the timestamp record ‘8am in Charlotte’",
-          },
+      episodes: [
+        {
+          id: 1535809341,
+          artwork: "",
+          trackName: "The Joe",
+          idTrack: 1000629725791,
+          url: "",
+          date: "2023-09-30T07:00:00Z",
+          description:
+            "With the arrival of Drake’s ‘For All The Dogs,’ the JBP dives into the timestamp record ‘8am in Charlotte’",
+        },
       ],
     };
-    const episodeId = '1000629725791';
+    const episodeId = "1000629725791";
 
     render(
       <Router>

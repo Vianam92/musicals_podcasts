@@ -20,6 +20,18 @@ export interface DetailModel{
     episodes: Episodes[];
 }
 
+export interface DetailMapper{
+    id: string | number | undefined;
+    artwork: string;
+    artist: string;
+    trackName: string;
+    summary?: string | undefined;
+    idTrack: string | number;
+    url?: string | undefined;
+    date: string;
+    description: string;
+}
+
 export interface Detail{
     id: string | number;
     artwork: string;
@@ -27,20 +39,16 @@ export interface Detail{
     trackName: string;
     summary: string;
     idTrack: string | number;
-    url?: string;
     date: string;
-    description: string;
 }
 
 export interface Episodes{
     id: string | number;
     artwork: string;
-    artist?: string;
     trackName: string;
-    summary: string;
     description: string;
     idTrack: string | number;
-    url?: string;
+    url: string;
     date: string;
 }
 export interface EpisodesAudio {
