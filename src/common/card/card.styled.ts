@@ -9,14 +9,18 @@ export const ListImage = styled.li`
 
 export const Image = styled.img`
   margin: 20px 0;
-  width: 250px;
+  width: 200px;
 `;
 
 export const Title = styled.li`
-  display: flex;
-  flex-direction: column;
   padding: 20px;
   border-bottom: 2px solid rgba(128, 128, 128, 0.217);
+
+  a{
+    color: black;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const TitleSpan = styled.span`

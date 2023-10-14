@@ -47,11 +47,15 @@ export const ListStyle = styled.li`
 export const CardsEpisodes = styled.article`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   max-width: 550px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  height: auto;
   padding: 15px;
+  height: auto;
+
+
+  section{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 15px;
+  }
 `;
 
 export const LayoutGrid = styled.article`

@@ -4,7 +4,7 @@ import { UseContextGeneral } from "../../core/useContext/useContext";
 import EpisodesComponent from "./episodes.component";
 import { IdEpisodeRequest } from "../../common/model/detail.vm";
 
-const EpisodesContainer = ({ episodeId }: any) => {
+const EpisodesContainer = ({ episodeId }: IdEpisodeRequest) => {
   const { detail } = useContext(UseContextGeneral);
  
   return <EpisodesComponent detail={detail} episodeId={episodeId}/>;

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 const AudioComponent = (props: EpisodesAudio) => {
   return (
     <CardsEpisodes>
+      <section>
       <h1>{props.trackName}</h1>
       <p>{props.description}.</p>
       <audio src={props.url} controls>
@@ -14,6 +15,7 @@ const AudioComponent = (props: EpisodesAudio) => {
           <a href={props.url}>enlace del video</a>.
         </p>
       </audio>
+      </section>
     </CardsEpisodes>
   );
 };

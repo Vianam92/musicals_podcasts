@@ -17,6 +17,10 @@ export const TdCard = styled.td`
   border-bottom: 2px solid rgba(128, 128, 128, 0.217);
   padding:2px 5px;
   margin: 10px 5px;
+
+  a{
+    color: black;
+  }
 `;
 
 export const TdLast = styled.td`
