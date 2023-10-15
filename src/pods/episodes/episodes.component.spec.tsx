@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import EpisodesComponent from "./episodes.component";
 import { BrowserRouter as Router } from "react-router-dom";
 import { DetailModel } from "../../common/model/detail.vm";

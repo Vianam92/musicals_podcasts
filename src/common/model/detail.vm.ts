@@ -38,8 +38,8 @@ export interface Detail{
     artist: string;
     trackName: string;
     summary: string;
-    idTrack: string | number;
-    date: string;
+    idTrack?: string | number;
+    date?: string;
 }
 
 export interface Episodes{
