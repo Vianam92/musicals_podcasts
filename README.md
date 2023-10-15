@@ -1,4 +1,4 @@
-# musicals_podcasts
+# musicals podcasts
 
 This project was created with [React](https://create-react-app.dev/)
 
