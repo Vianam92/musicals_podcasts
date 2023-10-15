@@ -1,5 +1,4 @@
 import {
-  Detail,
   DetailMapper,
   Episodes,
   IdEpisodeRequest,
@@ -16,33 +15,41 @@ export const filterPodcast = (podcast: List[], podcastSearch: string) => {
     : [];
 };
 
-export const findPods = (newIds: any, podcast: List[]) => {
-  let newPodcast: any = [];
-  newIds.map((id: []) =>
-    newPodcast.push(podcast.find((item: List) => item.id === id.toString()))
-  );
+export const findPods = (newIds: number[], podcast: List[]) => {
+  let newPodcast: List[] = [];
+  newIds.map((id: number) => {
+    const founId = podcast.find((item: List) => item.id === id.toString());
+    if (founId) {
+      newPodcast.push(founId);
+    }
+  });
   return newPodcast;
 };
 
 export const newIdsPods = (detail: DetailMapper[]) => {
-  let ids = new Set();
+  let ids = new Set<any>();
   detail.filter((item: DetailMapper) => ids.add(item.id));
-  let newIds = Array.from(ids);
+  const newIds = Array.from(ids);
   return newIds;
 };
 
 export const addSummary = (detail: DetailMapper[], podcast: List[]) => {
-  let addSummary: Detail[] = [];
-  let newDetail: any = [];
-  newIdsPods(detail).map((id: any) =>
-    newDetail.push(detail.find((item: any) => item.id === id))
-  );
-  findPods(newIdsPods(detail), podcast).filter((item: Detail) =>
-    newDetail.filter((data: Detail) =>
-      addSummary.push({ ...data, summary: item.summary })
-    )
-  );
-  return addSummary.map((summary: Detail) => ({
+  let addSummary: DetailMapper[] = [];
+  let newDetail: DetailMapper[] = [];
+  const newIds: number[] = newIdsPods(detail);
+  newIds.map((id: number) => {
+    const findId = detail.find((item: DetailMapper) => item.id === id);
+    if (findId) {
+      newDetail.push(findId);
+    }
+  });
+  const matchingDetail = findPods(newIds, podcast);
+  matchingDetail.filter((item) => {
+    newDetail.filter((data) => {
+      addSummary.push({ ...data, summary: item.summary });
+    });
+  });
+  return addSummary.map((summary: DetailMapper) => ({
     artist: summary.artist,
     artwork: summary.artwork,
     date: summary.date,
@@ -54,11 +61,17 @@ export const addSummary = (detail: DetailMapper[], podcast: List[]) => {
 };
 
 export const getEpisodes = (detail: DetailMapper[]) => {
-  let newEpisodes: any = [];
-  newIdsPods(detail).map((id: any) =>
-    newEpisodes.push(detail.filter((item: any) => item.idTrack !== id))
-  );
-  return newEpisodes.flat().map((episodes: Episodes) => ({
+  let newEpisodes: DetailMapper[] = [];
+  const newIds: number[] = newIdsPods(detail);
+  newIds.map((id: number) => {
+    const findId: DetailMapper[] = detail.filter(
+      (item: DetailMapper) => item.idTrack !== id
+    );
+    if (findId.length > 0) {
+      newEpisodes.push(...findId);
+    }
+  });
+  return newEpisodes.flat().map((episodes: DetailMapper) => ({
     id: episodes.id,
     artwork: episodes.artwork,
     date: episodes.date,
@@ -82,7 +95,9 @@ export const findEpisode = (
 ) => {
   let newEpisode: Episodes[] = [];
   const id = Number(episodeId);
-  const findId: any = episodes.find((value: Episodes) => value.idTrack === id);
-  newEpisode.push(findId);
+  const findId = episodes.find((value: Episodes) => value.idTrack === id);
+  if (findId) {
+    newEpisode.push(findId);
+  }
   return newEpisode;
 };
