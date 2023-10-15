@@ -16,7 +16,7 @@ export const filterPodcast = (podcast: List[], podcastSearch: string) => {
     : [];
 };
 
-const findPods = (newIds: any, podcast: List[]) => {
+export const findPods = (newIds: any, podcast: List[]) => {
   let newPodcast: any = [];
   newIds.map((id: []) =>
     newPodcast.push(podcast.find((item: List) => item.id === id.toString()))
@@ -24,14 +24,14 @@ const findPods = (newIds: any, podcast: List[]) => {
   return newPodcast;
 };
 
-const newIdsPods = (detail: DetailMapper[]) => {
+export const newIdsPods = (detail: DetailMapper[]) => {
   let ids = new Set();
   detail.filter((item: DetailMapper) => ids.add(item.id));
   let newIds = Array.from(ids);
   return newIds;
 };
 
-const addSummary = (detail: DetailMapper[], podcast: List[]) => {
+export const addSummary = (detail: DetailMapper[], podcast: List[]) => {
   let addSummary: Detail[] = [];
   let newDetail: any = [];
   newIdsPods(detail).map((id: any) =>
@@ -53,7 +53,7 @@ const addSummary = (detail: DetailMapper[], podcast: List[]) => {
   }));
 };
 
-const getEpisodes = (detail: DetailMapper[]) => {
+export const getEpisodes = (detail: DetailMapper[]) => {
   let newEpisodes: any = [];
   newIdsPods(detail).map((id: any) =>
     newEpisodes.push(detail.filter((item: any) => item.idTrack !== id))

@@ -15,15 +15,13 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
     useContext(UseContextTime);
 
   useEffect(() => {
-    setTimesTampDetail(hoursUtil());
-    setIsTime(datefinally(timeStampDetail));
-  }, []);
-
-  useEffect(() => {
     async function startFetching() {
       try {
         const response = await detailRepository({ podcastId });
+        const timeService = hoursUtil();
         if (response || isTime) {
+          setTimesTampDetail(hoursUtil());
+          setIsTime(datefinally(timeStampDetail));
           setDetail({
             detail: newDataFilter(podcast, response).summary,
             episodes: newDataFilter(podcast, response).episodes,
@@ -33,7 +31,7 @@ const PodcastContainer = ({ podcastId }: IdRequest) => {
               detail: newDataFilter(podcast, response).summary,
               episodes: newDataFilter(podcast, response).episodes,
             },
-            time: timeStampDetail,
+            time: timeStampDetail ? timeStampDetail : timeService,
           });
         }
       } catch (error) {

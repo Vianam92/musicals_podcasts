@@ -15,7 +15,7 @@ const CardEpisodesComponent = ({ episode, podcastId }: Props) => {
   return (
     <CardsEpisodes className="article-episodes">
       {episode ? (
-        <>
+        <section>
           <h2>
             Episodes: <small>{episode?.length}</small>
           </h2>
@@ -49,7 +49,7 @@ const CardEpisodesComponent = ({ episode, podcastId }: Props) => {
               )}
             </tbody>
           </table>
-        </>
+        </section>
       ) : (
         ""
       )}

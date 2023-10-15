@@ -38,4 +38,16 @@ describe("Card Component", () => {
     expect(screen.getByText('The Joe')).toBeInTheDocument();
     expect(screen.getByText('Lorem ipsun')).toBeInTheDocument();
   });
+  it("should  show No Detail", () => {
+    let detail: undefined;
+
+    render(
+      <Router>
+        <CardComponent
+          detail={detail}
+        />
+      </Router>
+    );
+    expect(screen.getByText('No Detail')).toBeInTheDocument();
+  });
 });

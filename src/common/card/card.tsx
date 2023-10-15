@@ -5,7 +5,7 @@ import { ListImage, Image , Title, TitleSpan, TitleBy, ListDescription, Descript
 import { Link } from "react-router-dom";
 
 interface Props{
-  detail: DetailModel;
+  detail: DetailModel | undefined;
 }
 const CardComponent = ({ detail}: Props) => {
 
