@@ -1,6 +1,5 @@
-import { renderHook, act, waitFor } from "@testing-library/react";
+import { renderHook, act } from "@testing-library/react";
 import { useList } from "./list.hook";
-import { List } from "../../common/model/list.vm";
 import * as listRep from "./list.repository";
 
 describe("useList", () => {
