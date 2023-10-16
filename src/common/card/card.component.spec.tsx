@@ -7,7 +7,7 @@ import { Detail } from "../model/detail.vm";
 describe("Card Component", () => {
   it("should  render", () => {
     const detail: Detail = {
-      id: "1535809341",
+      id: 1535809341,
       artwork: "https://image",
       artist: "The Joe",
       trackName: "The Joe",
