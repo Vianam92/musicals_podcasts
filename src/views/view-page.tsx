@@ -1,6 +1,6 @@
 import FilterPodcast from "../pods/filter/filter.podcast";
 import ListContainer from "../pods/list/list.container";
-import { useState, useContext } from "react";
+import { useState, useContext, SetStateAction } from "react";
 import SectionLayout from "../layout/center.layout";
 import UseContextGeneral from "../core/useContext/useContext";
 
@@ -8,7 +8,7 @@ const Home = () => {
   const [podcastSearch, setPodcastSearch] = useState<string>("");
   const { podcast } = useContext(UseContextGeneral);
 
-  const handlerInput = (value: any) => {
+  const handlerInput = (value: SetStateAction<string>) => {
     setPodcastSearch(value);
   };
   return (

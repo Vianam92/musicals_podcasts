@@ -7,12 +7,12 @@ import { Detail } from "../model/detail.vm";
 describe("Card Component", () => {
   it("should  render", () => {
     const detail: Detail = {
-        id: '0',
-        artwork: "",
-        artist: "The Joe",
-        trackName: "The Joe",
-        summary: "Lorem ipsun",
-        date: "",
+      id: "1535809341",
+      artwork: "https://image",
+      artist: "The Joe",
+      trackName: "The Joe",
+      summary:"Tune into Joe Budden and his friends.",
+      date: "2023-10-14T08:00:00Z",
     };
 
     render(
@@ -26,7 +26,7 @@ describe("Card Component", () => {
         />
       </Router>
     );
-    expect(screen.getByText('The Joe')).toBeInTheDocument();
-    expect(screen.getByText('Lorem ipsun')).toBeInTheDocument();
+    expect(screen.getByText("The Joe")).toBeInTheDocument();
+    expect(screen.getByText("Tune into Joe Budden and his friends.")).toBeInTheDocument();
   });
 });
