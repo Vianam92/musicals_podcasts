@@ -6,11 +6,13 @@ import UseContextGeneral from "../../core/useContext/useContext";
 import UseContextTime from "../../core/useContext/useTime";
 import ls from "../../common/local-storage.ts/localStorage";
 import { IdRequest } from "../../common/model/detail.vm";
+import UseContextLoader from "../../core/useContext/useLoader";
 
 export const useDetail = ({ podcastId }: IdRequest) => {
   const { podcast, setDetail } = useContext(UseContextGeneral);
   const { timeStampDetail, setTimesTampDetail, isTime, setIsTime } =
     useContext(UseContextTime);
+  const { setIsLoader } = useContext(UseContextLoader);
 
   const loadDetail = async () => {
     try {
@@ -30,6 +32,7 @@ export const useDetail = ({ podcastId }: IdRequest) => {
           },
           time: timeStampDetail ? timeStampDetail : timeService,
         });
+        setIsLoader(false);
       }
     } catch (error) {
       console.error(error);
